@@ -1,0 +1,198 @@
+Website Documentation: CasaGen Public-Facing Site
+1. Primary Goal:
+To convert visitors into registered users by clearly communicating the platform's unique value: combining AI-powered lead generation, investment analysis, and transaction management into one simple platform.
+
+2. Target Audience:
+
+Individual Real Estate Agents (tech-savvy, looking for an edge)
+
+Real Estate Investors (data-driven, focused on ROI)
+
+Brokerage Teams (focused on productivity and team management)
+
+3. Key Conversion Points (CTAs):
+
+Primary: "Start Free Trial" or "Sign Up"
+
+Secondary: "Request a Demo" or "Watch Video"
+
+4. Sitemap (Website Structure):
+
+/ (Homepage)
+
+/features (A detailed page with sub-sections)
+
+/pricing (Tiered pricing plans)
+
+/blog (For content marketing, SEO, and news)
+
+/contact (A simple contact/support form)
+
+/login (This links to the portal, not part of the marketing site)
+
+/signup (This is the registration page)
+
+Homepage Wireframe (A Modern, Narrative Structure)
+This is a top-to-bottom blueprint for your homepage. A modern website tells a story as the user scrolls.
+
+[Section 1: The Hero]
+Goal: Explain what your product is and why it matters in 5 seconds. This is the most important section.
+
+Key Components:
+
+Navigation Bar:
+
+Logo (CasaGen)
+
+Links: Features | Pricing | Blog
+
+Buttons: Log In (for existing users) | Start Free Trial (Primary CTA)
+
+Main Headline (H1): Big, bold, and value-focused.
+
+Example: Find Off-Market Deals. Analyze Investments. Manage Your Entire Pipeline. All with AI.
+
+Sub-Headline: A 1-2 sentence explanation.
+
+Example: CasaGen is the all-in-one platform for real estate professionals. Our AI specialists find leads you can't, our copilot analyzes deals in seconds, and our dashboard manages your transactions from start to close.
+
+Call-to-Action (CTA) Buttons:
+
+Start Your 14-Day Free Trial (Primary)
+
+Request a Demo (Secondary)
+
+Visual:
+
+Modern approach: A high-quality, auto-playing video (muted) that shows the most impressive parts of your product: the AI Lead Gen Chat and the AI Property Analysis dashboard. This is far more effective than a static image.
+
+[Section 2: Social Proof]
+Goal: Build instant trust. Show that other professionals are already using your tool.
+
+Key Components:
+
+Simple Headline: "Trusted by top agents and investors at:"
+
+Logo Bar: A scrolling or static bar of well-known real estate brokerage logos (e.g., Compass, Keller Williams, RE/MAX, eXp Realty, etc.).
+
+[Section 3: Feature 1 - AI Lead Generation (The "Why You're Different")]
+Goal: Highlight your most unique feature: the AI Lead Gen chat.
+
+Layout: A two-column layout.
+
+Left Side (Text):
+
+Headline: Find Leads No One Else Can See.
+
+Description: "Stop competing for the same public listings. Our AI Lead Specialist sifts through tax records, owner history, and proxy data to find hidden, off-market opportunities. Just ask in plain English."
+
+Checklist:
+
+✓ Find long-term owners
+
+✓ Identify likely investment properties
+
+✓ Uncover out-of-state owners
+
+Right Side (Visual):
+
+A simple, animated GIF of the "CasaGen Lead Generation Chat" in action (exactly like the screenshots you sent). It should show a user typing a query and the AI returning qualified leads.
+
+[Section 4: Feature 2 - AI Property Analysis]
+Goal: Show how you analyze both on-market and off-market properties.
+
+Layout: A two-column layout, flipped from the section above for visual rhythm.
+
+Left Side (Visual):
+
+A video clip from the casagen.mp4 file you sent. It should show the "Property Analysis" page, focusing on the "Investment Score" and the "AI Property Copilot" chat.
+
+Right Side (Text):
+
+Headline: Analyze Any Deal in 30 Seconds.
+
+Description: "Never guess on an investment again. Our AI Copilot analyzes any property and gives you an instant breakdown of its investment potential, risks, and neighborhood quality."
+
+Checklist:
+
+✓ AI-powered investment & risk scores
+
+✓ Interactive Flip vs. Rental calculator
+
+✓ In-depth school, transportation, and market data
+
+[Section 5: Feature 3 - All-in-One Platform (Transactions & Calendar)]
+Goal: Seal the deal by showing it's not just a search tool—it's the central hub for their entire business.
+
+Layout: A two-column layout.
+
+Left Side (Text):
+
+Headline: Your Entire Business, All in One Place.
+
+Description: "Ditch the spreadsheets and scattered apps. Our Transaction Manager turns every deal into a simple checklist. All your deadlines, client tasks, and market news are automatically organized in your Master Calendar."
+
+Checklist:
+
+✓ Automated transaction timelines
+
+✓ Integrated calendar for deadlines and tasks
+
+✓ Curated market news feed
+
+Right Side (Visual):
+
+A clean, professional composite image showing the "Transactions" page timeline next to the new "Calendar" view, with lines/arrows showing how a task from one appears on the other.
+
+[Section 6: Testimonials]
+Goal: Humanize the product. Let a real person sell it for you.
+
+Layout: A full-width section with 1-3 "cards" of customer quotes.
+
+Component (per card):
+
+Quote: "CasaGen's AI lead finder brought me two off-market deals in my first month. It's a total game-changer and has replaced three other tools I was paying for."
+
+Photo: (Professional headshot of the agent)
+
+Name: "Sarah Jenkins"
+
+Title: "Principal Agent, Bellevue WA"
+
+[Section 7: Final Call to Action (CTA)]
+Goal: A final, simple, unmissable chance to convert the user.
+
+Layout: A simple, full-width, centered section.
+
+Headline: Stop Searching. Start Closing.
+
+Sub-Headline: "See what our AI can do for your business. Start your 14-day free trial today. No credit card required."
+
+Button: Start Your Free Trial
+
+[Section 8: Footer]
+Goal: Standard navigation, legal, and contact information.
+
+Layout: A 4-column layout.
+
+Column 1 (Product):
+
+Features
+
+Pricing
+
+Request a Demo
+
+Column 2 (Company):
+
+About Us
+
+Blog
+
+Contact
+
+Column 3 (Legal):
+
+Privacy Policy
+
+Terms of Service
