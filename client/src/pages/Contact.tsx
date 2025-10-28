@@ -1,283 +1,143 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin } from "lucide-react";
-import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
-import { insertContactSubmissionSchema } from "@shared/schema";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import type { InsertContactSubmission } from "@shared/schema";
+import { Mail, Calendar } from "lucide-react";
 
 export default function Contact() {
-  const { toast } = useToast();
-  
-  const form = useForm<InsertContactSubmission>({
-    resolver: zodResolver(insertContactSubmissionSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      company: "",
-      message: "",
-    },
-  });
-
-  const contactMutation = useMutation({
-    mutationFn: (data: InsertContactSubmission) =>
-      apiRequest("POST", "/api/contact", data),
-    onSuccess: () => {
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for your message! We'll get back to you within 24 hours.",
-      });
-      form.reset();
-    },
-    onError: (error: any) => {
-      toast({
-        title: "Error",
-        description: error.message || "Failed to send message. Please try again.",
-        variant: "destructive",
-      });
-    },
-  });
-
-  const onSubmit = (data: InsertContactSubmission) => {
-    contactMutation.mutate(data);
-  };
-
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#f6f7f8] dark:bg-[#101c22]">
       <Navigation />
 
       <main className="pt-20 lg:pt-24">
         {/* Hero */}
-        <section className="py-20 lg:py-32 bg-gradient-to-b from-background to-muted/30">
+        <section className="py-20 lg:py-32">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-5xl lg:text-6xl font-bold text-foreground mb-6">
+            <h1 className="text-4xl lg:text-5xl font-black text-[#0d171b] dark:text-slate-50 mb-6 tracking-tight">
               Get in Touch
             </h1>
-            <p className="text-xl lg:text-2xl text-muted-foreground">
-              Have questions? Want to request a demo? We're here to help.
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+              Reach out to us directly or fill out the form and we'll get back to you within 24 hours.
             </p>
           </div>
         </section>
 
-        {/* Contact Form & Info */}
-        <section className="py-20 lg:py-32">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-              {/* Contact Form */}
-              <Card className="p-8 lg:p-12">
-                <h2 className="text-3xl font-bold text-foreground mb-6">
-                  Send Us a Message
-                </h2>
-                
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Name *</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Your name"
-                              data-testid="input-name"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email *</FormLabel>
-                          <FormControl>
-                            <Input
-                              type="email"
-                              placeholder="your@email.com"
-                              data-testid="input-email"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="phone"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Phone</FormLabel>
-                          <FormControl>
-                            <Input
-                              type="tel"
-                              placeholder="(555) 123-4567"
-                              data-testid="input-phone"
-                              {...field}
-                              value={field.value || ""}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="company"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Company</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Your company name"
-                              data-testid="input-company"
-                              {...field}
-                              value={field.value || ""}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="message"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Message *</FormLabel>
-                          <FormControl>
-                            <Textarea
-                              placeholder="Tell us about your needs..."
-                              rows={6}
-                              data-testid="input-message"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <Button
-                      type="submit"
-                      size="lg"
-                      className="w-full"
-                      disabled={contactMutation.isPending}
-                      data-testid="button-submit"
-                    >
-                      {contactMutation.isPending ? "Sending..." : "Send Message"}
-                    </Button>
-                  </form>
-                </Form>
-              </Card>
-
-              {/* Contact Info */}
-              <div>
-                <h2 className="text-3xl font-bold text-foreground mb-6">
-                  Contact Information
-                </h2>
-                
-                <p className="text-lg text-muted-foreground mb-8">
-                  Reach out to us directly or fill out the form and we'll get back
-                  to you within 24 hours.
-                </p>
-
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Mail className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">
-                        Email Us
-                      </h3>
-                      <p className="text-muted-foreground">
-                        support@casagen.com
-                      </p>
-                      <p className="text-muted-foreground">
-                        sales@casagen.com
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Phone className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">
-                        Call Us
-                      </h3>
-                      <p className="text-muted-foreground">
-                        1-800-CASAGEN
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        Mon-Fri 9am-6pm PST
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <MapPin className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">
-                        Visit Us
-                      </h3>
-                      <p className="text-muted-foreground">
-                        123 Tech Street
-                      </p>
-                      <p className="text-muted-foreground">
-                        San Francisco, CA 94105
-                      </p>
-                    </div>
-                  </div>
+        {/* Contact Methods */}
+        <section className="pb-20 lg:pb-32">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="space-y-4 mb-12">
+              {/* Email */}
+              <a
+                href="mailto:info@casagen.ai"
+                className="flex items-center gap-4 rounded-xl bg-white dark:bg-slate-800/50 p-6 shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition-shadow"
+              >
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#1193d4]/10 text-[#1193d4] flex-shrink-0">
+                  <Mail className="h-6 w-6" />
                 </div>
-
-                {/* Request Demo Card */}
-                <Card className="mt-12 p-8 bg-primary text-primary-foreground">
-                  <h3 className="text-2xl font-bold mb-3">
-                    Want a Personalized Demo?
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-[#0d171b] dark:text-slate-50 mb-1">
+                    Email Us
                   </h3>
-                  <p className="mb-6 opacity-90">
-                    See CasaGen in action with a guided tour tailored to your
-                    specific needs.
+                  <p className="text-slate-600 dark:text-slate-400">
+                    info@casagen.ai
                   </p>
-                  <Button
-                    variant="secondary"
-                    size="lg"
-                    className="w-full"
-                    data-testid="button-demo-card"
-                  >
-                    Schedule a Demo
-                  </Button>
-                </Card>
+                </div>
+                <svg className="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+
+            {/* Demo Card */}
+            <div className="rounded-xl bg-gradient-to-br from-[#1193d4] to-[#0e7ab8] p-8 text-center shadow-xl">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-white/20 mx-auto mb-6">
+                <Calendar className="h-8 w-8 text-white" />
               </div>
+              <h2 className="text-3xl font-black text-white mb-4 tracking-tight">
+                Want a Personalized Demo?
+              </h2>
+              <p className="text-lg text-white/90 mb-8 max-w-xl mx-auto">
+                See CasaGen in action with a guided tour tailored to your specific needs.
+              </p>
+              <Button
+                size="lg"
+                className="h-12 px-8 bg-white text-[#1193d4] hover:bg-slate-50 font-bold text-base rounded-lg shadow-lg"
+                asChild
+              >
+                <a href="mailto:info@casagen.ai?subject=Demo Request">Request a Demo</a>
+              </Button>
+            </div>
+
+            {/* Simple Contact Form (Optional) */}
+            <div className="mt-12 rounded-xl bg-white dark:bg-slate-800/50 p-8 shadow-sm border border-slate-200 dark:border-slate-700">
+              <h2 className="text-2xl font-black text-[#0d171b] dark:text-slate-50 mb-6 tracking-tight">
+                Send us a message
+              </h2>
+              <form className="space-y-4" onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.currentTarget);
+                const subject = 'Contact Form Submission';
+                const body = `Name: ${formData.get('name')}%0D%0AEmail: ${formData.get('email')}%0D%0APhone: ${formData.get('phone')}%0D%0A%0D%0AMessage:%0D%0A${formData.get('message')}`;
+                window.location.href = `mailto:info@casagen.ai?subject=${subject}&body=${body}`;
+              }}>
+                <div>
+                  <label htmlFor="name" className="block text-sm font-semibold text-[#0d171b] dark:text-slate-300 mb-2">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-4 py-3 text-slate-900 dark:text-slate-50 focus:border-[#1193d4] focus:ring-2 focus:ring-[#1193d4]/20 outline-none transition-colors"
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-semibold text-[#0d171b] dark:text-slate-300 mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-4 py-3 text-slate-900 dark:text-slate-50 focus:border-[#1193d4] focus:ring-2 focus:ring-[#1193d4]/20 outline-none transition-colors"
+                    placeholder="you@example.com"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-semibold text-[#0d171b] dark:text-slate-300 mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-4 py-3 text-slate-900 dark:text-slate-50 focus:border-[#1193d4] focus:ring-2 focus:ring-[#1193d4]/20 outline-none transition-colors"
+                    placeholder="(123) 456-7890"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-semibold text-[#0d171b] dark:text-slate-300 mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={5}
+                    className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-4 py-3 text-slate-900 dark:text-slate-50 focus:border-[#1193d4] focus:ring-2 focus:ring-[#1193d4]/20 outline-none transition-colors resize-none"
+                    placeholder="How can we help you?"
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full h-12 bg-[#1193d4] hover:bg-[#0e7ab8] text-white font-bold text-base rounded-lg shadow-sm"
+                >
+                  Send Message
+                </Button>
+              </form>
             </div>
           </div>
         </section>

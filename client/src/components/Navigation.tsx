@@ -20,30 +20,29 @@ export function Navigation() {
   const navLinks = [
     { href: "/features", label: "Features" },
     { href: "/pricing", label: "Pricing" },
-    { href: "/blog", label: "Blog" },
+    { href: "/contact", label: "Contact" },
   ];
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-md shadow-sm"
-          : "bg-transparent"
+          ? "bg-[#f6f7f8]/95 dark:bg-[#101c22]/95 backdrop-blur-sm shadow-sm"
+          : "bg-[#f6f7f8]/80 dark:bg-[#101c22]/80 backdrop-blur-sm"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          <Link 
-            href="/" 
-            data-testid="link-home"
-            className="flex items-center gap-2 hover-elevate active-elevate-2 rounded-md px-2 py-1 -ml-2"
+        <div className="flex items-center justify-between h-16">
+          <Link
+            href="/"
+            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
             <img
               src={tamarinIcon}
-              alt="CasaGen Tamarin"
-              className="h-8 w-8"
+              alt="CasaGen"
+              className="h-10 w-10"
             />
-            <span className="text-xl lg:text-2xl font-bold text-foreground">
+            <span className="text-xl font-black text-[#0d171b] dark:text-slate-50">
               CasaGen
             </span>
           </Link>
@@ -51,15 +50,14 @@ export function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link 
-                key={link.href} 
+              <Link
+                key={link.href}
                 href={link.href}
-                className={`text-base font-medium transition-colors hover:text-primary ${
+                className={`text-base font-semibold transition-colors ${
                   location === link.href
-                    ? "text-primary"
-                    : "text-foreground"
+                    ? "text-[#1193d4]"
+                    : "text-slate-700 dark:text-slate-300 hover:text-[#1193d4]"
                 }`}
-                data-testid={`link-${link.label.toLowerCase()}`}
               >
                 {link.label}
               </Link>
@@ -70,16 +68,16 @@ export function Navigation() {
           <div className="hidden md:flex items-center gap-3">
             <Button
               variant="ghost"
+              className="font-semibold text-[#1193d4] hover:bg-[#1193d4]/10"
               asChild
-              data-testid="button-login"
             >
-              <Link href="/login">Log In</Link>
+              <a href="https://app.casagen.ai">Log In</a>
             </Button>
             <Button
+              className="bg-[#1193d4] hover:bg-[#0e7ab8] text-white font-bold shadow-sm"
               asChild
-              data-testid="button-trial-nav"
             >
-              <Link href="/signup">Start Free Trial</Link>
+              <a href="https://app.casagen.ai">Start Free Trial</a>
             </Button>
           </div>
 
@@ -89,7 +87,6 @@ export function Navigation() {
             size="icon"
             className="md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            data-testid="button-mobile-menu"
           >
             {isMobileMenuOpen ? (
               <X className="h-6 w-6" />
@@ -101,19 +98,18 @@ export function Navigation() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t">
+          <div className="md:hidden py-4 border-t border-slate-200 dark:border-slate-700">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <Link 
-                  key={link.href} 
+                <Link
+                  key={link.href}
                   href={link.href}
-                  className={`text-base font-medium transition-colors hover:text-primary px-2 py-1 ${
+                  className={`text-base font-semibold px-2 py-1 ${
                     location === link.href
-                      ? "text-primary"
-                      : "text-foreground"
+                      ? "text-[#1193d4]"
+                      : "text-slate-700 dark:text-slate-300"
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  data-testid={`link-mobile-${link.label.toLowerCase()}`}
                 >
                   {link.label}
                 </Link>
@@ -121,18 +117,16 @@ export function Navigation() {
               <div className="flex flex-col gap-2 pt-2">
                 <Button
                   variant="ghost"
-                  className="w-full"
+                  className="w-full font-semibold text-[#1193d4]"
                   asChild
-                  data-testid="button-mobile-login"
                 >
-                  <Link href="/login">Log In</Link>
+                  <a href="https://app.casagen.ai">Log In</a>
                 </Button>
                 <Button
-                  className="w-full"
+                  className="w-full bg-[#1193d4] hover:bg-[#0e7ab8] text-white font-bold"
                   asChild
-                  data-testid="button-mobile-trial"
                 >
-                  <Link href="/signup">Start Free Trial</Link>
+                  <a href="https://app.casagen.ai">Start Free Trial</a>
                 </Button>
               </div>
             </div>

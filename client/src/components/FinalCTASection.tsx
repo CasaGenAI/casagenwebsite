@@ -14,7 +14,7 @@ export function FinalCTASection() {
         </h2>
         
         <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-          See what our AI can do for your business. Start your 14-day free trial
+          See what our AI can do for your business. Start your 30-day free trial
           today. No credit card required.
         </p>
 
@@ -24,14 +24,14 @@ export function FinalCTASection() {
           asChild
           data-testid="button-final-cta"
         >
-          <Link href="/signup" className="flex items-center gap-2">
+          <a href="https://app.casagen.ai" className="flex items-center gap-2">
             Start Your Free Trial
             <ArrowRight className="h-5 w-5" />
-          </Link>
+          </a>
         </Button>
 
         <p className="text-sm text-white/70 mt-4">
-          No credit card required • 14-day free trial • Cancel anytime
+          No credit card required • 30-day free trial • Cancel anytime
         </p>
       </div>
     </section>
