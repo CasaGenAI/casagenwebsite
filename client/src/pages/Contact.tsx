@@ -1,7 +1,44 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Mail, Calendar } from "lucide-react";
+
+const faqs = [
+  {
+    question: "What is CasaGen?",
+    answer: "CasaGen is an AI-powered property management system designed for real estate agents, vacation rental managers, and property managers.",
+  },
+  {
+    question: "How does CasaGen use AI?",
+    answer: "CasaGen uses AI to automate guest messaging, respond to inquiries, and streamline property operations.",
+  },
+  {
+    question: "Is my data secure?",
+    answer: "Yes. CasaGen uses encryption and industry-standard security practices to protect your data.",
+  },
+  {
+    question: "Can I try CasaGen for free?",
+    answer: "Yes. You can sign up for a free trial to explore the platform.",
+  },
+  {
+    question: "How do I get support?",
+    answer: "You can reach out via the contact form above or email us at info@casagen.ai.",
+  },
+  {
+    question: "Does CasaGen integrate with my PMS?",
+    answer: "PMS integration is not yet available but is on our roadmap. Contact us to learn more about upcoming integrations.",
+  },
+  {
+    question: "Who can see my properties and clients?",
+    answer: "Only you. Your data is private to your account.",
+  },
+];
 
 export default function Contact() {
   return (
@@ -139,6 +176,42 @@ export default function Contact() {
                 </Button>
               </form>
             </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="pb-20 lg:pb-32 bg-white dark:bg-slate-900/50">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-black text-[#0d171b] dark:text-slate-50 mb-4 tracking-tight">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-lg text-slate-600 dark:text-slate-300">
+                Find answers to common questions about CasaGen
+              </p>
+            </div>
+
+            <div className="rounded-xl bg-[#f6f7f8] dark:bg-slate-800/50 p-6 lg:p-8 border border-slate-200 dark:border-slate-700">
+              <Accordion type="single" collapsible className="w-full">
+                {faqs.map((faq, index) => (
+                  <AccordionItem key={index} value={`item-${index}`} className="border-slate-300 dark:border-slate-600">
+                    <AccordionTrigger className="text-left text-[#0d171b] dark:text-slate-50 font-semibold hover:no-underline hover:text-[#1193d4]">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-slate-600 dark:text-slate-300">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+
+            <p className="text-center mt-8 text-slate-600 dark:text-slate-400">
+              Have more questions? Reach out to us at{" "}
+              <a href="mailto:info@casagen.ai" className="text-[#1193d4] hover:underline font-medium">
+                info@casagen.ai
+              </a>
+            </p>
           </div>
         </section>
       </main>
