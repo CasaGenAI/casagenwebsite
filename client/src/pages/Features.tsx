@@ -98,7 +98,7 @@ export default function Features() {
               the best tools and insights.
             </p>
             <Button size="lg" asChild data-testid="button-features-trial">
-              <Link href="/signup">Start Your Free Trial</Link>
+              <a href="https://app.casagen.ai/signup">Start Your Free Trial</a>
             </Button>
           </div>
         </section>
@@ -156,7 +156,7 @@ export default function Features() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild data-testid="button-features-cta">
-                <Link href="/signup">Start Free Trial</Link>
+                <a href="https://app.casagen.ai/signup">Start Free Trial</a>
               </Button>
               <Button
                 size="lg"

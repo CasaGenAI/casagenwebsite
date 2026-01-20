@@ -33,7 +33,7 @@ export function HeroSection() {
                 asChild
                 data-testid="button-hero-trial"
               >
-                <a href="https://app.casagen.ai">Start Your 30-Day Free Trial</a>
+                <a href="https://app.casagen.ai/signup">Start Your 30-Day Free Trial</a>
               </Button>
               <Button
                 size="lg"

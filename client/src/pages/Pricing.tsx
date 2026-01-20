@@ -128,7 +128,7 @@ export default function Pricing() {
                     {plan.cta === "Contact Sales" ? (
                       <a href="/contact">{plan.cta}</a>
                     ) : (
-                      <a href="https://app.casagen.ai">{plan.cta}</a>
+                      <a href="https://app.casagen.ai/signup">{plan.cta}</a>
                     )}
                   </Button>
                 </div>

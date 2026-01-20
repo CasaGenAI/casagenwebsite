@@ -69,7 +69,7 @@ export default function Home() {
                     className="h-12 px-6 bg-[#1193d4] hover:bg-[#0e7ab8] text-white font-bold text-base rounded-lg shadow-sm"
                     asChild
                   >
-                    <a href="https://app.casagen.ai">Start Your 30-Day Free Trial</a>
+                    <a href="https://app.casagen.ai/signup">Start Your 30-Day Free Trial</a>
                   </Button>
                   <Button
                     size="lg"
@@ -244,7 +244,7 @@ export default function Home() {
               className="h-14 px-8 bg-white text-[#1193d4] hover:bg-slate-50 font-bold text-lg rounded-lg shadow-xl"
               asChild
             >
-              <a href="https://app.casagen.ai">Start Your Free Trial</a>
+              <a href="https://app.casagen.ai/signup">Start Your Free Trial</a>
             </Button>
             <p className="text-sm text-white/80 mt-4">
               No credit card required • 30-day free trial • Cancel anytime

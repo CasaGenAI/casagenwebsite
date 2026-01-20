@@ -24,7 +24,7 @@ export function FinalCTASection() {
           asChild
           data-testid="button-final-cta"
         >
-          <a href="https://app.casagen.ai" className="flex items-center gap-2">
+          <a href="https://app.casagen.ai/signup" className="flex items-center gap-2">
             Start Your Free Trial
             <ArrowRight className="h-5 w-5" />
           </a>

@@ -77,7 +77,7 @@ export function Navigation() {
               className="bg-[#1193d4] hover:bg-[#0e7ab8] text-white font-bold shadow-sm"
               asChild
             >
-              <a href="https://app.casagen.ai">Start Free Trial</a>
+              <a href="https://app.casagen.ai/signup">Start Free Trial</a>
             </Button>
           </div>
 
@@ -126,7 +126,7 @@ export function Navigation() {
                   className="w-full bg-[#1193d4] hover:bg-[#0e7ab8] text-white font-bold"
                   asChild
                 >
-                  <a href="https://app.casagen.ai">Start Free Trial</a>
+                  <a href="https://app.casagen.ai/signup">Start Free Trial</a>
                 </Button>
               </div>
             </div>

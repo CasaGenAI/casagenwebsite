@@ -104,77 +104,24 @@ export default function Contact() {
               </Button>
             </div>
 
-            {/* Simple Contact Form (Optional) */}
+            {/* Google Form */}
             <div className="mt-12 rounded-xl bg-white dark:bg-slate-800/50 p-8 shadow-sm border border-slate-200 dark:border-slate-700">
               <h2 className="text-2xl font-black text-[#0d171b] dark:text-slate-50 mb-6 tracking-tight">
                 Send us a message
               </h2>
-              <form className="space-y-4" onSubmit={(e) => {
-                e.preventDefault();
-                const formData = new FormData(e.currentTarget);
-                const subject = 'Contact Form Submission';
-                const body = `Name: ${formData.get('name')}%0D%0AEmail: ${formData.get('email')}%0D%0APhone: ${formData.get('phone')}%0D%0A%0D%0AMessage:%0D%0A${formData.get('message')}`;
-                window.location.href = `mailto:info@casagen.ai?subject=${subject}&body=${body}`;
-              }}>
-                <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-[#0d171b] dark:text-slate-300 mb-2">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-4 py-3 text-slate-900 dark:text-slate-50 focus:border-[#1193d4] focus:ring-2 focus:ring-[#1193d4]/20 outline-none transition-colors"
-                    placeholder="John Doe"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-[#0d171b] dark:text-slate-300 mb-2">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-4 py-3 text-slate-900 dark:text-slate-50 focus:border-[#1193d4] focus:ring-2 focus:ring-[#1193d4]/20 outline-none transition-colors"
-                    placeholder="you@example.com"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-semibold text-[#0d171b] dark:text-slate-300 mb-2">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-4 py-3 text-slate-900 dark:text-slate-50 focus:border-[#1193d4] focus:ring-2 focus:ring-[#1193d4]/20 outline-none transition-colors"
-                    placeholder="(123) 456-7890"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-[#0d171b] dark:text-slate-300 mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={5}
-                    className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-4 py-3 text-slate-900 dark:text-slate-50 focus:border-[#1193d4] focus:ring-2 focus:ring-[#1193d4]/20 outline-none transition-colors resize-none"
-                    placeholder="How can we help you?"
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full h-12 bg-[#1193d4] hover:bg-[#0e7ab8] text-white font-bold text-base rounded-lg shadow-sm"
+              <div className="flex justify-center">
+                <iframe
+                  src="https://docs.google.com/forms/d/e/1FAIpQLSchSz8iQ6Q8GpPpbLk-5duoNEfwB9k-V5dip8xGBgCgnSn63A/viewform?embedded=true"
+                  width="100%"
+                  height="1138"
+                  frameBorder="0"
+                  marginHeight={0}
+                  marginWidth={0}
+                  className="max-w-[640px]"
                 >
-                  Send Message
-                </Button>
-              </form>
+                  Loading…
+                </iframe>
+              </div>
             </div>
           </div>
         </section>
