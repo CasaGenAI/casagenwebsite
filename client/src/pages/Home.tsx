@@ -77,7 +77,7 @@ export default function Home() {
                     className="h-12 px-6 bg-[#1193d4]/10 hover:bg-[#1193d4]/20 text-[#1193d4] border-0 font-bold text-base rounded-lg"
                     asChild
                   >
-                    <a href="/contact">Request a Demo</a>
+                    <a href="/contact#contact-form">Request a Demo</a>
                   </Button>
                 </div>
               </div>

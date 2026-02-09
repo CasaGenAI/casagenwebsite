@@ -35,6 +35,7 @@ export function Navigation() {
         <div className="flex items-center justify-between h-16">
           <Link
             href="/"
+            onClick={() => window.scrollTo(0, 0)}
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
             <img

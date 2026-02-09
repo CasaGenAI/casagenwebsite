@@ -41,7 +41,7 @@ export function HeroSection() {
                 asChild
                 data-testid="button-hero-demo"
               >
-                <Link href="/contact" className="flex items-center gap-2">
+                <Link href="/contact#contact-form" className="flex items-center gap-2">
                   <Play className="h-4 w-4" />
                   Request a Demo
                 </Link>

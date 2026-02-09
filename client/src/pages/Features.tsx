@@ -164,7 +164,7 @@ export default function Features() {
                 asChild
                 data-testid="button-features-demo"
               >
-                <Link href="/contact">Request a Demo</Link>
+                <Link href="/contact#contact-form">Request a Demo</Link>
               </Button>
             </div>
           </div>

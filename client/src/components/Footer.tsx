@@ -10,7 +10,7 @@ export function Footer() {
       links: [
         { label: "Features", href: "/features" },
         { label: "Pricing", href: "/pricing" },
-        { label: "Request a Demo", href: "/contact" },
+        { label: "Request a Demo", href: "/contact#contact-form" },
       ],
     },
     {

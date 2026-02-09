@@ -8,6 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Mail, Calendar } from "lucide-react";
+import { useEffect } from "react";
 
 const faqs = [
   {
@@ -41,6 +42,14 @@ const faqs = [
 ];
 
 export default function Contact() {
+  useEffect(() => {
+    if (window.location.hash === "#contact-form") {
+      setTimeout(() => {
+        document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#f6f7f8] dark:bg-[#101c22]">
       <Navigation />
@@ -98,14 +107,16 @@ export default function Contact() {
               <Button
                 size="lg"
                 className="h-12 px-8 bg-white text-[#1193d4] hover:bg-slate-50 font-bold text-base rounded-lg shadow-lg"
-                asChild
+                onClick={() => {
+                  document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" });
+                }}
               >
-                <a href="mailto:info@casagen.ai?subject=Demo Request">Request a Demo</a>
+                Request a Demo
               </Button>
             </div>
 
             {/* Google Form */}
-            <div className="mt-12 rounded-xl bg-white dark:bg-slate-800/50 p-8 shadow-sm border border-slate-200 dark:border-slate-700">
+            <div id="contact-form" className="mt-12 rounded-xl bg-white dark:bg-slate-800/50 p-8 shadow-sm border border-slate-200 dark:border-slate-700">
               <h2 className="text-2xl font-black text-[#0d171b] dark:text-slate-50 mb-6 tracking-tight">
                 Send us a message
               </h2>
