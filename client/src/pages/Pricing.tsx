@@ -1,6 +1,8 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { APP_URL } from "@/config";
+import { Link } from "wouter";
 import { Check, X, Loader2, BarChart3, DollarSign, AlertTriangle, Building2, MessageSquare } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -122,9 +124,9 @@ function mapTierToDisplayPlan(tier: PricingTier): DisplayPlan {
 
 function handleSelectPlan(tierId: string) {
   if (tierId === "enterprise") {
-    window.location.href = "mailto:sales@casagen.ai";
+    window.location.href = "/contact#contact-form";
   } else {
-    window.location.href = `https://app.casagen.ai/signup?plan=${tierId}`;
+    window.location.href = `${APP_URL}/signup?plan=${tierId}`;
   }
 }
 
@@ -592,7 +594,7 @@ export default function Pricing() {
               className="h-12 px-8 bg-[#1193d4] hover:bg-[#0e7ab8] text-white font-bold text-base rounded-lg shadow-sm"
               asChild
             >
-              <a href="mailto:sales@casagen.ai">Contact Sales</a>
+              <Link href="/contact#contact-form">Contact Sales</Link>
             </Button>
           </div>
         </section>

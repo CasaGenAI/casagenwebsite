@@ -1,8 +1,9 @@
 import { useEffect } from "react";
+import { APP_URL } from "@/config";
 
 export default function Signup() {
   useEffect(() => {
-    window.location.href = "https://app.casagen.ai/signup";
+    window.location.href = `${APP_URL}/signup`;
   }, []);
 
   return (

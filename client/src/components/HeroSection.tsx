@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Play } from "lucide-react";
+import { APP_URL } from "@/config";
 
 export function HeroSection() {
   return (
@@ -33,7 +34,7 @@ export function HeroSection() {
                 asChild
                 data-testid="button-hero-trial"
               >
-                <a href="https://app.casagen.ai/signup">Start Your 30-Day Free Trial</a>
+                <Link href="/pricing">Start Your 14-Day Free Trial</Link>
               </Button>
               <Button
                 size="lg"

@@ -1,6 +1,8 @@
 import { Navigation } from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Footer } from "@/components/Footer";
+import { Link } from "wouter";
+import { APP_URL } from "@/config";
 import { Check, Sparkles, TrendingUp, FileText } from "lucide-react";
 
 export default function Home() {
@@ -69,7 +71,7 @@ export default function Home() {
                     className="h-12 px-6 bg-[#1193d4] hover:bg-[#0e7ab8] text-white font-bold text-base rounded-lg shadow-sm"
                     asChild
                   >
-                    <a href="https://app.casagen.ai/signup">Start Your 30-Day Free Trial</a>
+                    <Link href="/pricing">Start Your 14-Day Free Trial</Link>
                   </Button>
                   <Button
                     size="lg"
@@ -244,10 +246,10 @@ export default function Home() {
               className="h-14 px-8 bg-white text-[#1193d4] hover:bg-slate-50 font-bold text-lg rounded-lg shadow-xl"
               asChild
             >
-              <a href="https://app.casagen.ai/signup">Start Your Free Trial</a>
+              <Link href="/pricing">Start Your Free Trial</Link>
             </Button>
             <p className="text-sm text-white/80 mt-4">
-              No credit card required • 30-day free trial • Cancel anytime
+              No credit card required • 14-day free trial • Cancel anytime
             </p>
           </div>
         </section>

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import tamarinIcon from "@assets/tamarin-default-spinner_1761065048248.gif";
+import { APP_URL } from "@/config";
 
 export function Navigation() {
   const [location] = useLocation();
@@ -72,13 +73,13 @@ export function Navigation() {
               className="font-semibold text-[#1193d4] hover:bg-[#1193d4]/10"
               asChild
             >
-              <a href="https://app.casagen.ai">Log In</a>
+              <a href={APP_URL}>Log In</a>
             </Button>
             <Button
               className="bg-[#1193d4] hover:bg-[#0e7ab8] text-white font-bold shadow-sm"
               asChild
             >
-              <a href="https://app.casagen.ai/signup">Start Free Trial</a>
+              <Link href="/pricing">Start Your 14-Day Free Trial</Link>
             </Button>
           </div>
 
@@ -121,13 +122,13 @@ export function Navigation() {
                   className="w-full font-semibold text-[#1193d4]"
                   asChild
                 >
-                  <a href="https://app.casagen.ai">Log In</a>
+                  <a href={APP_URL}>Log In</a>
                 </Button>
                 <Button
                   className="w-full bg-[#1193d4] hover:bg-[#0e7ab8] text-white font-bold"
                   asChild
                 >
-                  <a href="https://app.casagen.ai/signup">Start Free Trial</a>
+                  <Link href="/pricing">Start Your 14-Day Free Trial</Link>
                 </Button>
               </div>
             </div>
