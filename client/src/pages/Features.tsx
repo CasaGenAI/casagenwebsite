@@ -99,7 +99,7 @@ export default function Features() {
               the best tools and insights.
             </p>
             <Button size="lg" asChild data-testid="button-features-trial">
-              <Link href="/pricing">Start Your 14-Day Free Trial</Link>
+              <Link href="/pricing">Start 14-Day Free Trial</Link>
             </Button>
           </div>
         </section>
@@ -157,7 +157,7 @@ export default function Features() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild data-testid="button-features-cta">
-                <a href={`${APP_URL}/signup`}>Start Free Trial</a>
+                <Link href="/pricing">Start 14-Day Free Trial</Link>
               </Button>
               <Button
                 size="lg"

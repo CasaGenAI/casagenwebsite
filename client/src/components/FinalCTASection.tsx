@@ -25,7 +25,7 @@ export function FinalCTASection() {
           data-testid="button-final-cta"
         >
           <Link href="/pricing" className="flex items-center gap-2">
-            Start Your 14-Day Free Trial
+            Start 14-Day Free Trial
             <ArrowRight className="h-5 w-5" />
           </Link>
         </Button>

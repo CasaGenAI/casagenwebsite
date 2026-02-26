@@ -34,7 +34,7 @@ export function HeroSection() {
                 asChild
                 data-testid="button-hero-trial"
               >
-                <Link href="/pricing">Start Your 14-Day Free Trial</Link>
+                <Link href="/pricing">Start 14-Day Free Trial</Link>
               </Button>
               <Button
                 size="lg"

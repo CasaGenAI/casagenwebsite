@@ -71,7 +71,7 @@ export default function Home() {
                     className="h-12 px-6 bg-[#1193d4] hover:bg-[#0e7ab8] text-white font-bold text-base rounded-lg shadow-sm"
                     asChild
                   >
-                    <Link href="/pricing">Start Your 14-Day Free Trial</Link>
+                    <Link href="/pricing">Start 14-Day Free Trial</Link>
                   </Button>
                   <Button
                     size="lg"
