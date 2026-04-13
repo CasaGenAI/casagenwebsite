@@ -26,10 +26,10 @@ export function Navigation() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-[#f6f7f8]/95 dark:bg-[#101c22]/95 backdrop-blur-sm shadow-sm"
-          : "bg-[#f6f7f8]/80 dark:bg-[#101c22]/80 backdrop-blur-sm"
+          ? "glass shadow-lg shadow-black/10"
+          : "bg-transparent"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,31 +37,34 @@ export function Navigation() {
           <Link
             href="/"
             onClick={() => window.scrollTo(0, 0)}
-            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+            className="flex items-center gap-2.5 hover:opacity-80 transition-opacity"
           >
             <img
               src={tamarinIcon}
               alt="CasaGen"
               className="h-10 w-10"
             />
-            <span className="text-xl font-black text-[#0d171b] dark:text-slate-50">
+            <span className="text-xl font-extrabold text-white tracking-tight">
               CasaGen
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-base font-semibold transition-colors ${
+                className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
                   location === link.href
-                    ? "text-[#1193d4]"
-                    : "text-slate-700 dark:text-slate-300 hover:text-[#1193d4]"
+                    ? "text-white bg-white/10"
+                    : "text-slate-400 hover:text-white hover:bg-white/5"
                 }`}
               >
                 {link.label}
+                {location === link.href && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-sky-400" />
+                )}
               </Link>
             ))}
           </div>
@@ -70,13 +73,13 @@ export function Navigation() {
           <div className="hidden md:flex items-center gap-3">
             <Button
               variant="ghost"
-              className="font-semibold text-[#1193d4] hover:bg-[#1193d4]/10"
+              className="text-slate-300 hover:text-white hover:bg-white/5 font-medium"
               asChild
             >
               <a href={APP_URL}>Log In</a>
             </Button>
             <Button
-              className="bg-[#1193d4] hover:bg-[#0e7ab8] text-white font-bold shadow-sm"
+              className="bg-gradient-to-r from-sky-500 to-cyan-400 hover:from-sky-400 hover:to-cyan-300 text-white font-semibold shadow-lg shadow-sky-500/20 border-0 transition-all duration-300 hover:shadow-sky-500/30"
               asChild
             >
               <Link href="/pricing">Start 14-Day Free Trial</Link>
@@ -87,7 +90,7 @@ export function Navigation() {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden text-slate-300 hover:text-white hover:bg-white/10"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? (
@@ -100,32 +103,32 @@ export function Navigation() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-slate-200 dark:border-slate-700">
-            <div className="flex flex-col gap-4">
+          <div className="md:hidden py-4 border-t border-white/10">
+            <div className="flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-base font-semibold px-2 py-1 ${
+                  className={`text-sm font-medium px-4 py-2.5 rounded-lg transition-colors ${
                     location === link.href
-                      ? "text-[#1193d4]"
-                      : "text-slate-700 dark:text-slate-300"
+                      ? "text-white bg-white/10"
+                      : "text-slate-400 hover:text-white hover:bg-white/5"
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
                 </Link>
               ))}
-              <div className="flex flex-col gap-2 pt-2">
+              <div className="flex flex-col gap-2 pt-4 mt-2 border-t border-white/10">
                 <Button
                   variant="ghost"
-                  className="w-full font-semibold text-[#1193d4]"
+                  className="w-full text-slate-300 hover:text-white hover:bg-white/5 font-medium"
                   asChild
                 >
                   <a href={APP_URL}>Log In</a>
                 </Button>
                 <Button
-                  className="w-full bg-[#1193d4] hover:bg-[#0e7ab8] text-white font-bold"
+                  className="w-full bg-gradient-to-r from-sky-500 to-cyan-400 hover:from-sky-400 hover:to-cyan-300 text-white font-semibold border-0"
                   asChild
                 >
                   <Link href="/pricing">Start 14-Day Free Trial</Link>

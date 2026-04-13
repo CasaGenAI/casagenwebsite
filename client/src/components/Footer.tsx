@@ -31,8 +31,10 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+    <footer className="relative border-t border-white/5">
+      <div className="absolute inset-0 bg-[hsl(225,25%,4%)]" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-1">
@@ -42,27 +44,27 @@ export function Footer() {
                 alt="CasaGen"
                 className="h-8 w-8"
               />
-              <span className="text-xl font-bold text-white">
+              <span className="text-xl font-extrabold text-white tracking-tight">
                 CasaGen
               </span>
             </Link>
-            <p className="text-sm text-gray-400 mb-4">
-              AI-powered real estate intelligence for professionals who want an edge.
+            <p className="text-sm text-slate-500 mb-4 leading-relaxed">
+              AI compliance and agent tools for modern brokerages.
             </p>
           </div>
 
           {/* Footer Links */}
           {footerSections.map((section) => (
             <div key={section.title}>
-              <h3 className="text-sm font-semibold text-white mb-4">
+              <h3 className="text-xs font-semibold text-slate-400 mb-4 uppercase tracking-widest">
                 {section.title}
               </h3>
               <ul className="space-y-3">
                 {section.links.map((link) => (
                   <li key={link.label}>
-                    <Link 
+                    <Link
                       href={link.href}
-                      className="text-sm text-gray-400 hover:text-white transition-colors"
+                      className="text-sm text-slate-500 hover:text-white transition-colors duration-200"
                       data-testid={`link-footer-${link.label
                         .toLowerCase()
                         .replace(/\s+/g, "-")}`}
@@ -77,9 +79,9 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-gray-800">
-          <p className="text-sm text-gray-400 text-center">
-            © {currentYear} CasaGen. All rights reserved.
+        <div className="mt-12 pt-8 border-t border-white/5">
+          <p className="text-sm text-slate-600 text-center">
+            &copy; {currentYear} CasaGen. All rights reserved.
           </p>
         </div>
       </div>

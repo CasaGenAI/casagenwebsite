@@ -7,8 +7,8 @@ export default function Signup() {
   }, []);
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <p className="text-muted-foreground">Redirecting to signup...</p>
+    <div className="min-h-screen flex items-center justify-center bg-[hsl(225,25%,6%)]">
+      <p className="text-slate-400">Redirecting to signup...</p>
     </div>
   );
 }
