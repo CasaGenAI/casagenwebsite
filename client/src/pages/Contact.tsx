@@ -13,31 +13,31 @@ import { useEffect } from "react";
 const faqs = [
   {
     question: "What is CasaGen?",
-    answer: "CasaGen is an AI-powered property management system designed for real estate agents, vacation rental managers, and property managers.",
+    answer: "CasaGen is an AI-powered compliance and transaction platform built for real estate brokerages. It helps brokerages monitor every transaction automatically while giving agents smarter tools to close deals.",
   },
   {
     question: "How does CasaGen use AI?",
-    answer: "CasaGen uses AI to automate guest messaging, respond to inquiries, and streamline property operations.",
+    answer: "AI flags compliance issues before they become problems, discovers off-market deals from public records and market signals, and provides property enrichment and analysis to help agents work faster.",
   },
   {
     question: "Is my data secure?",
-    answer: "Yes. CasaGen uses encryption and industry-standard security practices to protect your data.",
+    answer: "Yes. CasaGen uses bank-level encryption and industry-standard security practices. Enterprise plans include SSO and advanced security options.",
   },
   {
     question: "Can I try CasaGen for free?",
-    answer: "Yes. You can sign up for a free trial to explore the platform.",
+    answer: "Yes. Every plan comes with a 14-day free trial. Invite your agents and test the full platform before committing.",
   },
   {
     question: "How do I get support?",
-    answer: "You can reach out via the contact form above or email us at info@casagen.ai.",
+    answer: "You can reach out via the contact form above or email us at info@casagen.ai. Brokerage and Enterprise plans include priority and dedicated support.",
   },
   {
-    question: "Does CasaGen integrate with my PMS?",
-    answer: "PMS integration is not yet available but is on our roadmap. Contact us to learn more about upcoming integrations.",
+    question: "Who can see my brokerage's data?",
+    answer: "Only your team. Admins see brokerage-wide data, while agents only see their own pipeline and deals. Role-based permissions give you full control.",
   },
   {
-    question: "Who can see my properties and clients?",
-    answer: "Only you. Your data is private to your account.",
+    question: "How long does setup take?",
+    answer: "Most brokerages are up and running in minutes. Create your account, invite agents, and configure compliance rules — all from one dashboard. Enterprise plans include custom onboarding.",
   },
 ];
 
@@ -51,17 +51,19 @@ export default function Contact() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#f6f7f8] dark:bg-[#101c22]">
+    <div className="min-h-screen bg-[hsl(225,25%,6%)]">
       <Navigation />
 
       <main className="pt-20 lg:pt-24">
         {/* Hero */}
-        <section className="py-20 lg:py-32">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl lg:text-5xl font-black text-[#0d171b] dark:text-slate-50 mb-6 tracking-tight">
+        <section className="relative py-20 lg:py-32 overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-sky-500/6 rounded-full blur-[120px]" />
+
+          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 className="text-4xl lg:text-5xl font-extrabold text-white mb-6 tracking-tight">
               Get in Touch
             </h1>
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
               Reach out to us directly or fill out the form and we'll get back to you within 24 hours.
             </p>
           </div>
@@ -74,50 +76,55 @@ export default function Contact() {
               {/* Email */}
               <a
                 href="mailto:info@casagen.ai"
-                className="flex items-center gap-4 rounded-xl bg-white dark:bg-slate-800/50 p-6 shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition-shadow"
+                className="flex items-center gap-4 rounded-2xl glass-card-hover p-6"
               >
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#1193d4]/10 text-[#1193d4] flex-shrink-0">
+                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-sky-500/10 text-sky-400 flex-shrink-0">
                   <Mail className="h-6 w-6" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-[#0d171b] dark:text-slate-50 mb-1">
+                  <h3 className="text-lg font-bold text-white mb-1">
                     Email Us
                   </h3>
-                  <p className="text-slate-600 dark:text-slate-400">
+                  <p className="text-slate-400">
                     info@casagen.ai
                   </p>
                 </div>
-                <svg className="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-5 w-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </a>
             </div>
 
             {/* Demo Card */}
-            <div className="rounded-xl bg-gradient-to-br from-[#1193d4] to-[#0e7ab8] p-8 text-center shadow-xl">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-white/20 mx-auto mb-6">
-                <Calendar className="h-8 w-8 text-white" />
+            <div className="relative rounded-2xl overflow-hidden p-8 text-center shadow-xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-sky-600 via-sky-500 to-cyan-500" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.12),transparent_60%)]" />
+
+              <div className="relative">
+                <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-white/15 backdrop-blur-sm mx-auto mb-6">
+                  <Calendar className="h-8 w-8 text-white" />
+                </div>
+                <h2 className="text-3xl font-extrabold text-white mb-4 tracking-tight">
+                  Want a Personalized Demo?
+                </h2>
+                <p className="text-lg text-white/80 mb-8 max-w-xl mx-auto">
+                  See how CasaGen gives your brokerage real-time compliance oversight and your agents the tools to close more deals.
+                </p>
+                <Button
+                  size="lg"
+                  className="h-12 px-8 bg-white hover:bg-white/95 text-sky-600 font-bold text-base rounded-xl shadow-lg border-0 transition-all duration-300"
+                  onClick={() => {
+                    document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  Request a Demo
+                </Button>
               </div>
-              <h2 className="text-3xl font-black text-white mb-4 tracking-tight">
-                Want a Personalized Demo?
-              </h2>
-              <p className="text-lg text-white/90 mb-8 max-w-xl mx-auto">
-                See CasaGen in action with a guided tour tailored to your specific needs.
-              </p>
-              <Button
-                size="lg"
-                className="h-12 px-8 bg-white text-[#1193d4] hover:bg-slate-50 font-bold text-base rounded-lg shadow-lg"
-                onClick={() => {
-                  document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                Request a Demo
-              </Button>
             </div>
 
             {/* Google Form */}
-            <div id="contact-form" className="mt-12 rounded-xl bg-white dark:bg-slate-800/50 p-8 shadow-sm border border-slate-200 dark:border-slate-700">
-              <h2 className="text-2xl font-black text-[#0d171b] dark:text-slate-50 mb-6 tracking-tight">
+            <div id="contact-form" className="mt-12 rounded-2xl glass-card p-8">
+              <h2 className="text-2xl font-extrabold text-white mb-6 tracking-tight">
                 Send us a message
               </h2>
               <div className="flex justify-center">
@@ -130,7 +137,7 @@ export default function Contact() {
                   marginWidth={0}
                   className="max-w-[640px]"
                 >
-                  Loading…
+                  Loading...
                 </iframe>
               </div>
             </div>
@@ -138,25 +145,25 @@ export default function Contact() {
         </section>
 
         {/* FAQ Section */}
-        <section className="pb-20 lg:pb-32 bg-white dark:bg-slate-900/50">
+        <section className="pb-20 lg:pb-32">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl lg:text-4xl font-black text-[#0d171b] dark:text-slate-50 mb-4 tracking-tight">
+              <h2 className="text-3xl lg:text-4xl font-extrabold text-white mb-4 tracking-tight">
                 Frequently Asked Questions
               </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-300">
+              <p className="text-lg text-slate-400">
                 Find answers to common questions about CasaGen
               </p>
             </div>
 
-            <div className="rounded-xl bg-[#f6f7f8] dark:bg-slate-800/50 p-6 lg:p-8 border border-slate-200 dark:border-slate-700">
+            <div className="rounded-2xl glass-card p-6 lg:p-8">
               <Accordion type="single" collapsible className="w-full">
                 {faqs.map((faq, index) => (
-                  <AccordionItem key={index} value={`item-${index}`} className="border-slate-300 dark:border-slate-600">
-                    <AccordionTrigger className="text-left text-[#0d171b] dark:text-slate-50 font-semibold hover:no-underline hover:text-[#1193d4]">
+                  <AccordionItem key={index} value={`item-${index}`} className="border-white/10">
+                    <AccordionTrigger className="text-left text-white font-semibold hover:no-underline hover:text-sky-400 transition-colors">
                       {faq.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-slate-600 dark:text-slate-300">
+                    <AccordionContent className="text-slate-400">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
@@ -164,9 +171,9 @@ export default function Contact() {
               </Accordion>
             </div>
 
-            <p className="text-center mt-8 text-slate-600 dark:text-slate-400">
+            <p className="text-center mt-8 text-slate-500">
               Have more questions? Reach out to us at{" "}
-              <a href="mailto:info@casagen.ai" className="text-[#1193d4] hover:underline font-medium">
+              <a href="mailto:info@casagen.ai" className="text-sky-400 hover:text-sky-300 transition-colors font-medium">
                 info@casagen.ai
               </a>
             </p>
