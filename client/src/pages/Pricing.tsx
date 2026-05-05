@@ -38,36 +38,19 @@ const plans: Plan[] = [
     isContactUs: false,
   },
   {
-    id: "team",
-    name: "Team",
-    price: "$199",
-    priceDetail: "/mo · up to 15 seats",
-    savingsNote: "Save $480/year on annual billing",
-    description: "For small brokerages running unlimited deals.",
-    features: [
-      "Everything in Per-Deal",
-      "Unlimited transactions (up to 100 pages per document)",
-      "Agent profiles + role-based permissions",
-      "CE credit tracking + license verification",
-      "Tamper-proof audit trail — legally defensible for disputes",
-      "Team pipeline view",
-      "AI-drafted email replies",
-      "Email support",
-    ],
-    cta: "Start 14-Day Free Trial",
-    highlighted: false,
-    badge: null,
-    isContactUs: false,
-  },
-  {
     id: "brokerage",
     name: "Brokerage",
     price: "$549",
-    priceDetail: "/mo · up to 50 seats",
+    priceDetail: "/mo · up to 50 transactions",
     savingsNote: "Save $1,320/year on annual billing",
     description: "For brokerages that need compliance depth and agent management.",
     features: [
-      "Everything in Team",
+      "Everything in Per-Deal",
+      "Agent profiles + role-based permissions",
+      "CE credit + license expiration tracking",
+      "Tamper-proof audit trail — complete record of every change",
+      "Team pipeline view",
+      "AI-drafted email replies",
       "Automatic commission calculation from parsed PSA",
       "Commission dashboard + CSV export",
       "Quick audit mode",
@@ -81,12 +64,12 @@ const plans: Plan[] = [
     isContactUs: false,
   },
   {
-    id: "enterprise",
-    name: "Enterprise",
-    price: "Custom",
-    priceDetail: "unlimited seats",
-    savingsNote: "Starting at $1,500/mo",
-    description: "For large and multi-office brokerages with custom requirements.",
+    id: "custom",
+    name: "Custom",
+    price: "Let's talk",
+    priceDetail: "tailored to your brokerage",
+    savingsNote: null,
+    description: "For multi-office brokerages and unique requirements.",
     features: [
       "Everything in Brokerage",
       "Multi-office management",
@@ -108,17 +91,6 @@ function handleSelectPlan(plan: Plan) {
     window.location.href = `${APP_URL}/signup?plan=${plan.id}`;
   }
 }
-
-const faqData = [
-  {
-    question: "Is 'unlimited transactions' truly unlimited?",
-    answer: "Unlimited transactions covers standard residential PSAs up to 100 pages per document. Commercial transactions or documents over 100 pages — contact us.",
-  },
-  {
-    question: "What integrations are available on Enterprise?",
-    answer: "Enterprise plans include a dedicated resource to scope and build the integrations your brokerage needs — CRM, accounting, SSO, and more. Nothing is pre-built; we build it with you. Contact us to discuss your requirements.",
-  },
-];
 
 export default function Pricing() {
   return (
@@ -152,8 +124,8 @@ export default function Pricing() {
 
         {/* ── Pricing Cards ── */}
         <section style={{ background: "#ffffff", padding: "64px 24px" }}>
-          <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
+            <div className="grid md:grid-cols-3 gap-4">
               {plans.map((plan) => (
                 <div
                   key={plan.id}
@@ -267,7 +239,6 @@ export default function Pricing() {
                     {plan.features.map((feature, idx) => {
                       const isInherited =
                         feature === "Everything in Per-Deal" ||
-                        feature === "Everything in Team" ||
                         feature === "Everything in Brokerage";
                       return (
                         <li
@@ -330,129 +301,6 @@ export default function Pricing() {
           </div>
         </section>
 
-        {/* ── Value comparison ── */}
-        <section style={{ background: "#f7f7f5", padding: "64px 24px" }}>
-          <div style={{ maxWidth: "580px", margin: "0 auto" }}>
-            <h2
-              style={{
-                fontSize: "32px",
-                lineHeight: 1.2,
-                letterSpacing: "-0.96px",
-                color: "#1b0624",
-                fontWeight: 400,
-                textAlign: "center",
-                marginBottom: "12px",
-              }}
-            >
-              Replace three tools with one
-            </h2>
-            <p
-              style={{
-                fontSize: "16px",
-                color: "#898683",
-                textAlign: "center",
-                marginBottom: "32px",
-                lineHeight: 1.71,
-              }}
-            >
-              A typical brokerage running separate tools pays more — and still has compliance gaps.
-            </p>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "24px" }}>
-              {[
-                { name: "Transaction management (Dotloop / SkySlope)", price: "$340+/mo" },
-                { name: "CE tracking platform", price: "$50–100/mo" },
-                { name: "Commission management (Brokermint)", price: "$184+/mo" },
-              ].map((item, idx) => (
-                <div
-                  key={idx}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    padding: "14px 20px",
-                    borderRadius: "12px",
-                    background: "#edece7",
-                  }}
-                >
-                  <span style={{ fontSize: "14px", color: "#292421" }}>{item.name}</span>
-                  <span
-                    style={{
-                      fontSize: "13px",
-                      color: "#898683",
-                      fontWeight: 500,
-                      flexShrink: 0,
-                      marginLeft: "16px",
-                    }}
-                  >
-                    {item.price}
-                  </span>
-                </div>
-              ))}
-
-              {/* Subtotal */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  padding: "10px 20px",
-                }}
-              >
-                <span style={{ fontSize: "13px", color: "#898683" }}>
-                  Combined — with compliance gaps
-                </span>
-                <span style={{ fontSize: "13px", color: "#898683", fontWeight: 500 }}>
-                  $574–$624/mo
-                </span>
-              </div>
-
-              <div style={{ display: "flex", alignItems: "center", gap: "12px", padding: "2px 0" }}>
-                <div style={{ flexGrow: 1, height: "1px", background: "rgba(0,0,0,0.08)" }} />
-                <span style={{ fontSize: "12px", color: "#b2afae" }}>vs.</span>
-                <div style={{ flexGrow: 1, height: "1px", background: "rgba(0,0,0,0.08)" }} />
-              </div>
-
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  padding: "14px 20px",
-                  borderRadius: "12px",
-                  background: "#1b0624",
-                }}
-              >
-                <span style={{ fontSize: "14px", color: "#ffffff", fontWeight: 500 }}>
-                  CasaGen Brokerage — replaces all three
-                </span>
-                <span
-                  style={{
-                    fontSize: "13px",
-                    color: "rgba(255,255,255,0.65)",
-                    fontWeight: 500,
-                    flexShrink: 0,
-                    marginLeft: "16px",
-                  }}
-                >
-                  $549/mo
-                </span>
-              </div>
-            </div>
-
-            <p
-              style={{
-                textAlign: "center",
-                fontSize: "13px",
-                color: "#898683",
-                lineHeight: 1.65,
-              }}
-            >
-              Separate tools also mean fragmented audit trails, manual data entry between systems, and no unified compliance view.
-            </p>
-          </div>
-        </section>
-
         {/* ── Social proof — replace with a real quote or stat when available ── */}
         {/*
         <section style={{ background: "#ffffff", padding: "40px 24px" }}>
@@ -466,54 +314,6 @@ export default function Pricing() {
           </div>
         </section>
         */}
-
-        {/* ── FAQ ── */}
-        <section style={{ background: "#ffffff", padding: "64px 24px" }}>
-          <div style={{ maxWidth: "640px", margin: "0 auto" }}>
-            <h2
-              style={{
-                fontSize: "32px",
-                lineHeight: 1.2,
-                letterSpacing: "-0.96px",
-                color: "#1b0624",
-                fontWeight: 400,
-                textAlign: "center",
-                marginBottom: "40px",
-              }}
-            >
-              Questions
-            </h2>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-              {faqData.map((item, idx) => (
-                <div
-                  key={idx}
-                  style={{
-                    background: "#edece7",
-                    borderRadius: "16px",
-                    padding: "24px",
-                  }}
-                >
-                  <h3
-                    style={{
-                      fontSize: "15px",
-                      fontWeight: 500,
-                      color: "#292421",
-                      marginBottom: "8px",
-                      letterSpacing: "-0.15px",
-                      lineHeight: 1.4,
-                    }}
-                  >
-                    {item.question}
-                  </h3>
-                  <p style={{ fontSize: "14px", color: "#898683", lineHeight: 1.65 }}>
-                    {item.answer}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* ── CTA ── */}
         <section style={{ background: "#1b0624", padding: "96px 24px" }}>

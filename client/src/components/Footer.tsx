@@ -22,7 +22,7 @@ export function Footer() {
       ],
     },
     {
-      title: "Legal",
+      title: "Resources",
       links: [
         { label: "Privacy Policy", href: "/privacy" },
         { label: "Terms of Service", href: "/terms" },
