@@ -13,12 +13,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.log("New contact submission:", submission);
 
       // Send email notification via Postmark if configured
-      if (process.env.POSTMARK_SERVER_TOKEN) {
+      if (!process.env.POSTMARK_SERVER_TOKEN) {
+        console.warn("POSTMARK_SERVER_TOKEN missing — skipping email send");
+      } else {
         try {
           const senderEmail = process.env.POSTMARK_SENDER_EMAIL ?? "info@casagen.ai";
           const senderName = process.env.POSTMARK_SENDER_NAME ?? "CasaGen";
 
-          await fetch("https://api.postmarkapp.com/email", {
+          const postmarkRes = await fetch("https://api.postmarkapp.com/email", {
             method: "POST",
             headers: {
               "Accept": "application/json",
@@ -28,6 +30,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
             body: JSON.stringify({
               From: `${senderName} <${senderEmail}>`,
               To: senderEmail,
+              Cc: "info@casagen.ai",
               Subject: `New contact: ${submission.name} — ${submission.company || "Individual"}`,
               TextBody: [
                 `Name: ${submission.name}`,
@@ -39,6 +42,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
               ].join("\n"),
             }),
           });
+
+          const postmarkBody = await postmarkRes.text();
+          if (postmarkRes.ok) {
+            console.log(`Postmark accepted (${postmarkRes.status}): ${postmarkBody}`);
+          } else {
+            console.error(`Postmark rejected (${postmarkRes.status}): ${postmarkBody}`);
+          }
         } catch (emailError) {
           console.error("Failed to send Postmark notification:", emailError);
         }

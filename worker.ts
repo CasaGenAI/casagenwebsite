@@ -39,12 +39,14 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
   }
 
   // Send via Postmark
-  if (env.POSTMARK_SERVER_TOKEN) {
+  if (!env.POSTMARK_SERVER_TOKEN) {
+    console.warn("POSTMARK_SERVER_TOKEN missing — skipping email send");
+  } else {
     const senderEmail = env.POSTMARK_SENDER_EMAIL ?? "info@casagen.ai";
     const senderName = env.POSTMARK_SENDER_NAME ?? "CasaGen";
 
     try {
-      await fetch("https://api.postmarkapp.com/email", {
+      const postmarkRes = await fetch("https://api.postmarkapp.com/email", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -54,6 +56,7 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
         body: JSON.stringify({
           From: `${senderName} <${senderEmail}>`,
           To: senderEmail,
+          Cc: "info@casagen.ai",
           Subject: `New contact: ${body.name} — ${body.company ?? "Individual"}`,
           TextBody: [
             `Name: ${body.name}`,
@@ -65,6 +68,13 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
           ].join("\n"),
         }),
       });
+
+      const postmarkBody = await postmarkRes.text();
+      if (postmarkRes.ok) {
+        console.log(`Postmark accepted (${postmarkRes.status}): ${postmarkBody}`);
+      } else {
+        console.error(`Postmark rejected (${postmarkRes.status}): ${postmarkBody}`);
+      }
     } catch (err) {
       // Email failure is non-blocking — submission still succeeds
       console.error("Postmark error:", err);
