@@ -1,6 +1,8 @@
 name = "casagenwebsite"
 compatibility_date = "2025-10-21"
+main = "worker.ts"
 
 [assets]
 directory = "./dist/public"
 not_found_handling = "single-page-application"
+binding = "ASSETS"
