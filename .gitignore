@@ -4,6 +4,11 @@ dist
 server/public
 vite.config.ts.*
 *.tar.gz
+
+# Environment files — never commit secrets
 .env
 .env.local
 .env.production
+.env.*.local
+
+# Keep .env.development tracked (no secrets, only local dev URLs)
