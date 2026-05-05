@@ -109,14 +109,14 @@ const features = [
   {
     icon: <GraduationCap className="h-5 w-5" />,
     title: "Agent & Education Portal",
-    description: "CE tracking, license verification, commission management, and onboarding.",
+    description: "CE tracking, license tracking, commission management, and onboarding.",
   },
 ];
 
 const steps = [
   { number: "01", title: "Upload or connect your PSA", description: "AI semantically parses the contract, extracts every deadline, identifies all parties, and matches compliance rules for your state — in under 60 seconds." },
-  { number: "02", title: "Orchestrate every task automatically", description: "Tasks are assigned to the right parties from the document. Email threads are monitored. Completions are verified with attached proof before a human approves." },
-  { number: "03", title: "Close with a verified audit trail", description: "Every action documented, every compliance rule checked, every deadline tracked. Your brokerage closes with confidence and a complete record." },
+  { number: "02", title: "Orchestrate every task automatically", description: "Tasks are assigned to the right parties from the document. Email threads are monitored. Completions are reviewed with attached proof before a human approves." },
+  { number: "03", title: "Close with a complete audit trail", description: "Every action documented, every compliance rule checked, every deadline tracked. Your brokerage closes with confidence and a complete record." },
 ];
 
 function BulletList({ items }: { items: string[] }) {
@@ -194,7 +194,7 @@ export default function Home() {
                 maxWidth: "520px",
               }}
             >
-              Automated compliance review, task assignment, and deadline tracking the moment a PSA is uploaded. Nothing slips. Nothing is chased manually. Your brokerage is protected at every step.
+              Automated compliance review, task assignment, and deadline tracking the moment a PSA is uploaded. Nothing slips. Nothing is chased manually. Your brokerage stays informed at every step.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 items-center">
@@ -386,7 +386,7 @@ export default function Home() {
                   Protect your license. Scale your team.
                 </h3>
                 <p style={{ fontSize: "14px", lineHeight: 1.65, color: "rgba(255,255,255,0.55)" }}>
-                  Monitor every deal across every agent in real time. Compliance gaps are caught at intake — not during a licensing board audit. CE tracking and commission management built in.
+                  Monitor every deal across every agent in real time. Compliance gaps are surfaced at intake — not after the fact. CE tracking and commission management built in.
                 </p>
               </div>
             </div>
@@ -547,7 +547,7 @@ export default function Home() {
                 <ShowcaseLabel>Brokerage Admin</ShowcaseLabel>
                 <ShowcaseHeading>Full visibility — before problems reach closing</ShowcaseHeading>
                 <ShowcaseBody>
-                  Monitor every agent, every deal, and every compliance risk from one dashboard. Issues are flagged the moment a PSA is uploaded, not discovered at the end of escrow when it's too late to fix without delaying close.
+                  Monitor every agent, every deal, and every compliance risk from one dashboard. Issues are flagged the moment a PSA is uploaded, not discovered after the fact when it's too late to fix without delays.
                 </ShowcaseBody>
                 <BulletList items={[
                   "Real-time compliance risk across all active transactions",
@@ -574,7 +574,7 @@ export default function Home() {
                 <BulletList items={[
                   "Continuing education tracking and deadline alerts",
                   "Commission split administration and CSV export",
-                  "Agent onboarding workflows and license verification",
+                  "Agent onboarding workflows and license tracking",
                 ]} />
               </div>
             </div>

@@ -30,7 +30,7 @@ const features = [
     highlights: [
       "State rule databases: CA, FL, TX, NC and more",
       "Federal RESPA and TRID monitoring built in",
-      "Intake-level detection, not end-of-escrow discovery",
+      "Intake-level detection — caught before, not after the fact",
     ],
   },
   {
@@ -41,7 +41,7 @@ const features = [
     highlights: [
       "Entity-based auto-assignment from PSA — lenders, agents, title",
       "Thread-aware inbox triage — no manual bcc required",
-      "Human-in-the-loop proof verification before task close",
+      "Human-in-the-loop proof review before task close",
     ],
   },
   {
@@ -63,7 +63,7 @@ const features = [
     highlights: [
       "CE credit tracking and state deadline alerts",
       "Commission split administration and disbursement management",
-      "Agent onboarding workflows and license verification",
+      "Agent onboarding workflows and license tracking",
     ],
   },
 ];
