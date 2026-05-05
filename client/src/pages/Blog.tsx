@@ -1,126 +1,180 @@
+import type { CSSProperties } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 
-export default function Blog() {
-  const posts = [
-    {
-      title: "Why Brokerage Compliance Is the Next Competitive Advantage",
-      excerpt:
-        "Compliance isn't just risk mitigation — it's a growth lever. Learn how top brokerages are using AI to turn oversight into a selling point for recruiting agents.",
-      date: "March 15, 2024",
-      readTime: "5 min read",
-      category: "Compliance",
-    },
-    {
-      title: "How AI Flags Transaction Issues Before They Become Problems",
-      excerpt:
-        "A deep dive into how CasaGen's AI monitors every transaction in real time, catching missing documents, missed deadlines, and compliance gaps automatically.",
-      date: "March 10, 2024",
-      readTime: "7 min read",
-      category: "AI & Technology",
-    },
-    {
-      title: "Off-Market Deals: The Unfair Advantage Your Agents Need",
-      excerpt:
-        "How AI scans tax records, ownership data, and market signals to surface deals before they hit the MLS — and why brokerages should care.",
-      date: "March 5, 2024",
-      readTime: "6 min read",
-      category: "Off-Market",
-    },
-    {
-      title: "Case Study: How One Brokerage Cut Compliance Reviews by 80%",
-      excerpt:
-        "See how a 40-agent brokerage eliminated manual compliance checks and gave their admin team hours back every week with automated workflows.",
-      date: "February 28, 2024",
-      readTime: "4 min read",
-      category: "Success Stories",
-    },
-    {
-      title: "The Brokerage Admin Dashboard: Full Visibility in One Place",
-      excerpt:
-        "Agent performance, deal flow, compliance status, and pipeline health — a walkthrough of the tools that give brokerage owners complete control.",
-      date: "February 20, 2024",
-      readTime: "5 min read",
-      category: "Product Features",
-    },
-    {
-      title: "Building an Agent-First Brokerage: Tools That Help, Not Hinder",
-      excerpt:
-        "The best brokerages give agents tools they actually want to use. Here's how to balance compliance oversight with agent productivity.",
-      date: "February 15, 2024",
-      readTime: "6 min read",
-      category: "Best Practices",
-    },
-  ];
+const posts = [
+  {
+    title: "Why Brokerage Compliance Is the Next Competitive Advantage",
+    excerpt:
+      "Compliance isn't just risk mitigation — it's a growth lever. Learn how top brokerages are using AI to turn oversight into a selling point for recruiting agents.",
+    date: "March 15, 2024",
+    readTime: "5 min read",
+    category: "Compliance",
+  },
+  {
+    title: "How AI Flags Transaction Issues Before They Become Problems",
+    excerpt:
+      "A deep dive into how CasaGen's AI monitors every transaction in real time, catching missing documents, missed deadlines, and compliance gaps automatically.",
+    date: "March 10, 2024",
+    readTime: "7 min read",
+    category: "AI & Technology",
+  },
+  {
+    title: "Off-Market Deals: The Unfair Advantage Your Agents Need",
+    excerpt:
+      "How AI scans tax records, ownership data, and market signals to surface deals before they hit the MLS — and why brokerages should care.",
+    date: "March 5, 2024",
+    readTime: "6 min read",
+    category: "Off-Market",
+  },
+  {
+    title: "Case Study: How One Brokerage Cut Compliance Reviews by 80%",
+    excerpt:
+      "See how a 40-agent brokerage eliminated manual compliance checks and gave their admin team hours back every week with automated workflows.",
+    date: "February 28, 2024",
+    readTime: "4 min read",
+    category: "Success Stories",
+  },
+  {
+    title: "The Brokerage Admin Dashboard: Full Visibility in One Place",
+    excerpt:
+      "Agent performance, deal flow, compliance status, and pipeline health — a walkthrough of the tools that give brokerage owners complete control.",
+    date: "February 20, 2024",
+    readTime: "5 min read",
+    category: "Product Features",
+  },
+  {
+    title: "Building an Agent-First Brokerage: Tools That Help, Not Hinder",
+    excerpt:
+      "The best brokerages give agents tools they actually want to use. Here's how to balance compliance oversight with agent productivity.",
+    date: "February 15, 2024",
+    readTime: "6 min read",
+    category: "Best Practices",
+  },
+];
 
+export default function Blog() {
   return (
-    <div className="min-h-screen bg-[hsl(225,25%,6%)]">
+    <div style={{ background: "#ffffff", minHeight: "100vh" }}>
       <Navigation />
 
-      <main className="pt-20 lg:pt-24">
-        {/* Hero */}
-        <section className="relative py-20 lg:py-32 overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-violet-500/6 rounded-full blur-[120px]" />
-
-          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight">
-              Insights & Resources
+      <main style={{ paddingTop: "64px" }}>
+        {/* ── Hero ── */}
+        <section style={{ background: "#f7f7f5", padding: "80px 24px" }}>
+          <div style={{ maxWidth: "560px", margin: "0 auto", textAlign: "center" }}>
+            <h1
+              style={{
+                fontSize: "clamp(32px, 4.5vw, 52px)",
+                lineHeight: 1.05,
+                letterSpacing: "clamp(-1.5px, -0.04em, -2.6px)",
+                color: "#1b0624",
+                fontWeight: 400,
+                marginBottom: "16px",
+              }}
+            >
+              Insights & resources
             </h1>
-            <p className="text-xl lg:text-2xl text-slate-400">
-              Compliance best practices, AI trends, and strategies for modern brokerages
-              and their agents.
+            <p style={{ fontSize: "16px", lineHeight: 1.71, color: "#898683" }}>
+              Compliance best practices, AI trends, and strategies for modern brokerages and their agents.
             </p>
           </div>
         </section>
 
-        {/* Blog Posts */}
-        <section className="py-20 lg:py-32">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* ── Blog Posts ── */}
+        <section style={{ background: "#ffffff", padding: "64px 24px" }}>
+          <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {posts.map((post, index) => (
                 <div
                   key={index}
-                  className="group glass-card-hover rounded-2xl overflow-hidden flex flex-col"
+                  style={{
+                    background: "#edece7",
+                    borderRadius: "16px",
+                    overflow: "hidden",
+                    display: "flex",
+                    flexDirection: "column",
+                    cursor: "pointer",
+                  }}
+                  className="transition-opacity hover:opacity-85"
                   data-testid={`blog-post-${index}`}
                 >
-                  <div className="h-48 bg-gradient-to-br from-sky-500/10 via-transparent to-violet-500/10" />
+                  {/* Image placeholder */}
+                  <div
+                    style={{
+                      height: "160px",
+                      background: "linear-gradient(135deg, rgba(27,6,36,0.06) 0%, rgba(118,106,124,0.08) 100%)",
+                    }}
+                  />
 
-                  <div className="p-6 flex flex-col flex-grow">
-                    <div className="mb-4">
-                      <span className="inline-block px-3 py-1 rounded-full bg-sky-500/10 text-sky-400 text-xs font-semibold">
+                  <div style={{ padding: "24px", display: "flex", flexDirection: "column", flexGrow: 1 }}>
+                    <div style={{ marginBottom: "12px" }}>
+                      <span
+                        style={{
+                          display: "inline-block",
+                          background: "rgba(0,0,0,0.07)",
+                          color: "#898683",
+                          borderRadius: "999px",
+                          padding: "3px 10px",
+                          fontSize: "11px",
+                          fontWeight: 500,
+                          letterSpacing: "0.03em",
+                        }}
+                      >
                         {post.category}
                       </span>
                     </div>
 
-                    <h3 className="text-xl font-bold text-white mb-3 line-clamp-2 group-hover:text-sky-300 transition-colors">
+                    <h3
+                      style={{
+                        fontSize: "16px",
+                        lineHeight: 1.4,
+                        letterSpacing: "-0.2px",
+                        color: "#1b0624",
+                        fontWeight: 500,
+                        marginBottom: "10px",
+                      }}
+                    >
                       {post.title}
                     </h3>
 
-                    <p className="text-sm text-slate-400 mb-4 line-clamp-3 flex-grow leading-relaxed">
+                    <p
+                      style={{
+                        fontSize: "13px",
+                        color: "#898683",
+                        lineHeight: 1.65,
+                        marginBottom: "16px",
+                        flexGrow: 1,
+                        display: "-webkit-box",
+                        WebkitLineClamp: 3,
+                        WebkitBoxOrient: "vertical",
+                        overflow: "hidden",
+                      } as CSSProperties}
+                    >
                       {post.excerpt}
                     </p>
 
-                    <div className="flex items-center justify-between text-xs text-slate-500 mb-4">
-                      <div className="flex items-center gap-1.5">
-                        <Calendar className="h-3.5 w-3.5" />
-                        <span>{post.date}</span>
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <Clock className="h-3.5 w-3.5" />
-                        <span>{post.readTime}</span>
-                      </div>
-                    </div>
-
-                    <Button
-                      variant="ghost"
-                      className="w-full justify-between text-slate-400 hover:text-white hover:bg-white/5"
-                      data-testid={`button-read-${index}`}
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        paddingTop: "16px",
+                        borderTop: "1px solid rgba(0,0,0,0.06)",
+                      }}
                     >
-                      Read More
-                      <ArrowRight className="h-4 w-4" />
-                    </Button>
+                      <div style={{ display: "flex", gap: "12px" }}>
+                        <span style={{ display: "flex", alignItems: "center", gap: "4px", fontSize: "11px", color: "#b2afae" }}>
+                          <Calendar className="h-3 w-3" />
+                          {post.date}
+                        </span>
+                        <span style={{ display: "flex", alignItems: "center", gap: "4px", fontSize: "11px", color: "#b2afae" }}>
+                          <Clock className="h-3 w-3" />
+                          {post.readTime}
+                        </span>
+                      </div>
+                      <ArrowRight className="h-3.5 w-3.5" style={{ color: "#898683" }} />
+                    </div>
                   </div>
                 </div>
               ))}
@@ -128,31 +182,57 @@ export default function Blog() {
           </div>
         </section>
 
-        {/* Newsletter CTA */}
-        <section className="relative py-20 lg:py-24">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-sky-500/[0.02] to-transparent" />
-
-          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-4xl lg:text-5xl font-extrabold text-white mb-6 tracking-tight">
-              Stay Updated
+        {/* ── Newsletter CTA ── */}
+        <section style={{ background: "#f7f7f5", padding: "80px 24px" }}>
+          <div style={{ maxWidth: "480px", margin: "0 auto", textAlign: "center" }}>
+            <h2
+              style={{
+                fontSize: "32px",
+                lineHeight: 1.2,
+                letterSpacing: "-0.96px",
+                color: "#1b0624",
+                fontWeight: 400,
+                marginBottom: "12px",
+              }}
+            >
+              Stay updated
             </h2>
-            <p className="text-lg text-slate-400 mb-8">
-              Subscribe to our newsletter for weekly insights, market updates, and
-              exclusive content.
+            <p style={{ fontSize: "16px", color: "#898683", lineHeight: 1.71, marginBottom: "28px" }}>
+              Weekly insights, market updates, and exclusive content for modern brokerages.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <div style={{ display: "flex", gap: "8px", maxWidth: "400px", margin: "0 auto" }}>
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/50 transition-all"
+                style={{
+                  flexGrow: 1,
+                  padding: "10px 16px",
+                  borderRadius: "8px",
+                  border: "1px solid rgba(0,0,0,0.15)",
+                  background: "#eeeeee",
+                  fontSize: "14px",
+                  color: "#000000",
+                  outline: "none",
+                }}
                 data-testid="input-newsletter-email"
               />
-              <Button
-                className="bg-gradient-to-r from-sky-500 to-cyan-400 hover:from-sky-400 hover:to-cyan-300 text-white font-semibold rounded-xl border-0 shadow-lg shadow-sky-500/25"
+              <button
+                className="transition-opacity hover:opacity-85"
+                style={{
+                  background: "#160f0c",
+                  color: "#ffffff",
+                  borderRadius: "8px",
+                  padding: "10px 18px",
+                  fontSize: "14px",
+                  fontWeight: 500,
+                  border: "none",
+                  cursor: "pointer",
+                  whiteSpace: "nowrap",
+                }}
                 data-testid="button-newsletter-subscribe"
               >
                 Subscribe
-              </Button>
+              </button>
             </div>
           </div>
         </section>

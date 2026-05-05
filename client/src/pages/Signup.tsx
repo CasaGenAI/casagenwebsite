@@ -7,8 +7,16 @@ export default function Signup() {
   }, []);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[hsl(225,25%,6%)]">
-      <p className="text-slate-400">Redirecting to signup...</p>
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#ffffff",
+      }}
+    >
+      <p style={{ fontSize: "14px", color: "#898683" }}>Redirecting to signup...</p>
     </div>
   );
 }

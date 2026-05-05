@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find . -name sitemap.xml -o -name robots.txt -o -name sitemap.*)",
+      "Bash(grep -E \"\\\\.\\(xml|txt|js|json\\)$\")",
+      "Bash(Get-ChildItem -Path \"C:\\\\Source\\\\casagenwebsite\" -Force)",
+      "Bash(Select-Object Name, PSIsContainer)"
+    ]
+  }
+}

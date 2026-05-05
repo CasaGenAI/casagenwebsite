@@ -31,43 +31,48 @@ export function Footer() {
   ];
 
   return (
-    <footer className="relative border-t border-white/5">
-      <div className="absolute inset-0 bg-[hsl(225,25%,4%)]" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+    <footer style={{ background: "#f7f7f5", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "64px 24px" }}>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
-          {/* Brand Column */}
+
+          {/* Brand column */}
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <img
-                src={tamarinIcon}
-                alt="CasaGen"
-                className="h-8 w-8"
-              />
-              <span className="text-xl font-extrabold text-white tracking-tight">
-                CasaGen
-              </span>
+            <Link
+              href="/"
+              className="flex items-center gap-2 hover:opacity-75 transition-opacity"
+              style={{ textDecoration: "none", marginBottom: "12px", display: "inline-flex" }}
+            >
+              <img src={tamarinIcon} alt="CasaGen" style={{ height: "28px", width: "28px" }} />
+              <span style={{ fontSize: "16px", fontWeight: 700, color: "#000000" }}>CasaGen</span>
             </Link>
-            <p className="text-sm text-slate-500 mb-4 leading-relaxed">
-              AI compliance and agent tools for modern brokerages.
+            <p style={{ fontSize: "13px", color: "#898683", lineHeight: 1.6, marginTop: "4px" }}>
+              From contract to close — compliance, commissions, and CE in one platform.
             </p>
           </div>
 
-          {/* Footer Links */}
+          {/* Link columns */}
           {footerSections.map((section) => (
             <div key={section.title}>
-              <h3 className="text-xs font-semibold text-slate-400 mb-4 uppercase tracking-widest">
+              <h3
+                style={{
+                  fontSize: "11px",
+                  fontWeight: 600,
+                  color: "#898683",
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  marginBottom: "16px",
+                }}
+              >
                 {section.title}
               </h3>
-              <ul className="space-y-3">
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
                 {section.links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-slate-500 hover:text-white transition-colors duration-200"
-                      data-testid={`link-footer-${link.label
-                        .toLowerCase()
-                        .replace(/\s+/g, "-")}`}
+                      className="hover:text-black transition-colors"
+                      style={{ fontSize: "13px", color: "#898683", textDecoration: "none" }}
+                      data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
                     >
                       {link.label}
                     </Link>
@@ -78,9 +83,16 @@ export function Footer() {
           ))}
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-white/5">
-          <p className="text-sm text-slate-600 text-center">
+        {/* Bottom bar */}
+        <div
+          style={{
+            marginTop: "48px",
+            paddingTop: "24px",
+            borderTop: "1px solid rgba(0,0,0,0.06)",
+            textAlign: "center",
+          }}
+        >
+          <p style={{ fontSize: "12px", color: "#b2afae" }}>
             &copy; {currentYear} CasaGen. All rights reserved.
           </p>
         </div>

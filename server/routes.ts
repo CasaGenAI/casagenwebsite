@@ -10,9 +10,39 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const validatedData = insertContactSubmissionSchema.parse(req.body);
       const submission = await storage.createContactSubmission(validatedData);
       
-      // In a real application, you would send an email notification here
-      // For now, we'll just log it and return success
       console.log("New contact submission:", submission);
+
+      // Send email notification via Postmark if configured
+      if (process.env.POSTMARK_SERVER_TOKEN) {
+        try {
+          const senderEmail = process.env.POSTMARK_SENDER_EMAIL ?? "info@casagen.ai";
+          const senderName = process.env.POSTMARK_SENDER_NAME ?? "CasaGen";
+
+          await fetch("https://api.postmarkapp.com/email", {
+            method: "POST",
+            headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json",
+              "X-Postmark-Server-Token": process.env.POSTMARK_SERVER_TOKEN,
+            },
+            body: JSON.stringify({
+              From: `${senderName} <${senderEmail}>`,
+              To: senderEmail,
+              Subject: `New contact: ${submission.name} — ${submission.company || "Individual"}`,
+              TextBody: [
+                `Name: ${submission.name}`,
+                `Email: ${submission.email}`,
+                `Brokerage: ${submission.company || "Not provided"}`,
+                ``,
+                `Message:`,
+                submission.message,
+              ].join("\n"),
+            }),
+          });
+        } catch (emailError) {
+          console.error("Failed to send Postmark notification:", emailError);
+        }
+      }
       
       res.status(201).json({
         success: true,

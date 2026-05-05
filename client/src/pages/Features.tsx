@@ -1,167 +1,269 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { APP_URL } from "@/config";
 import {
-  Search,
   ShieldCheck,
-  Calendar,
+  Scale,
+  Zap,
   Users,
-  BarChart3,
-  FileText,
+  GraduationCap,
   ArrowRight,
 } from "lucide-react";
 
+const features = [
+  {
+    icon: ShieldCheck,
+    title: "Semantic PSA Intelligence",
+    description:
+      "Vision Language Models parse every Purchase and Sale Agreement semantically — not just as text. The system distinguishes hard deadlines from conditional contingencies and extracts every party for automatic task assignment.",
+    highlights: [
+      "Hard vs. conditional deadline detection",
+      "Cross-document entity extraction for auto-assignment",
+      "35 minutes of manual entry reduced to 60 seconds",
+    ],
+  },
+  {
+    icon: Scale,
+    title: "Regulatory Rule Engine",
+    description:
+      "State and federal compliance rules are automatically matched against your PSA at the moment of upload — covering CA DRE, TREC, Florida DBPR, and more, with federal RESPA and TRID monitoring built in. High-risk flags surface before they reach closing, not after.",
+    highlights: [
+      "State rule databases: CA, FL, TX, NC and more",
+      "Federal RESPA and TRID monitoring built in",
+      "Intake-level detection, not end-of-escrow discovery",
+    ],
+  },
+  {
+    icon: Zap,
+    title: "Agentic Task Orchestration",
+    description:
+      "AI identifies every required action in the contract, assigns tasks to parties retrieved directly from the document, and monitors email threads to confirm completion. The system moves from passive notification to active orchestration.",
+    highlights: [
+      "Entity-based auto-assignment from PSA — lenders, agents, title",
+      "Thread-aware inbox triage — no manual bcc required",
+      "Human-in-the-loop proof verification before task close",
+    ],
+  },
+  {
+    icon: Users,
+    title: "Brokerage Admin Dashboard",
+    description:
+      "Real-time visibility into every agent, every deal, and every compliance risk across your brokerage. Leaderboards, quick audit modes, and multi-tier oversight give brokers full control — and early warning.",
+    highlights: [
+      "Intake-level compliance risk detection across all transactions",
+      "Agent performance leaderboards and pipeline analytics",
+      "Multi-tenant oversight for multi-office brokerages",
+    ],
+  },
+  {
+    icon: GraduationCap,
+    title: "Agent & Education Portal",
+    description:
+      "A dedicated hub for everything your agents need beyond the deal. Manage onboarding, track continuing education requirements, administer commission splits, and control role-based permissions — all in one place.",
+    highlights: [
+      "CE credit tracking and state deadline alerts",
+      "Commission split administration and disbursement management",
+      "Agent onboarding workflows and license verification",
+    ],
+  },
+];
+
+// Capability comparison table data
+const capabilityTable = [
+  { capability: "Data Extraction", mechanism: "VLM-based Semantic Parsing", impact: "35 min of entry → 60 seconds" },
+  { capability: "Task Assignment", mechanism: "Entity Recognition & CRM Sync", impact: "Eliminates manual contact entry" },
+  { capability: "Email Triage", mechanism: "Thread-Aware NLP", impact: "Matches emails to files automatically" },
+  { capability: "Compliance Review", mechanism: "RegTech Integration", impact: "Continuous state and federal monitoring" },
+  { capability: "Admin Oversight", mechanism: "Multi-Tenant Dashboards", impact: "Real-time brokerage-wide risk visibility" },
+];
+
 export default function Features() {
-  const features = [
-    {
-      icon: ShieldCheck,
-      title: "Brokerage Compliance",
-      description:
-        "Protect your brokerage with built-in compliance workflows. Every transaction is tracked with audit trails, document verification, and automated checklists.",
-      highlights: [
-        "Automated compliance checklists",
-        "Full audit trail on every deal",
-        "Document tracking with version control",
-      ],
-      accent: "sky",
-    },
-    {
-      icon: Calendar,
-      title: "Transaction Management",
-      description:
-        "From contract to close, manage every deal with automated timelines, deadline tracking, and integrated task management across your entire team.",
-      highlights: [
-        "Automated deal timelines",
-        "Deadline alerts and reminders",
-        "Multi-agent deal coordination",
-      ],
-      accent: "cyan",
-    },
-    {
-      icon: Users,
-      title: "Brokerage Admin Tools",
-      description:
-        "Full visibility into your brokerage. Track agent performance, forecast revenue, manage permissions, and monitor deal flow from one dashboard.",
-      highlights: [
-        "Agent performance tracking and leaderboards",
-        "Revenue forecasting and pipeline analytics",
-        "Role-based permissions and onboarding",
-      ],
-      accent: "violet",
-    },
-    {
-      icon: Search,
-      title: "Off-Market Deal Finder",
-      description:
-        "Give your agents an edge with AI that scans tax records, ownership history, and market signals to surface off-market opportunities before anyone else.",
-      highlights: [
-        "AI-powered property discovery",
-        "Owner intent and motivation scoring",
-        "Targeted outreach lists",
-      ],
-      accent: "emerald",
-    },
-    {
-      icon: BarChart3,
-      title: "AI Property Intelligence",
-      description:
-        "Equip your agents with AI-powered property analysis — investment scores, risk assessments, pricing strategies, and market insights in seconds.",
-      highlights: [
-        "Investment and risk scoring",
-        "Days on Market predictions",
-        "Pricing strategy analysis",
-      ],
-      accent: "amber",
-    },
-    {
-      icon: FileText,
-      title: "Reporting & Analytics",
-      description:
-        "Track your brokerage's performance with real-time dashboards, agent activity reports, pipeline health, and compliance status at a glance.",
-      highlights: [
-        "Real-time pipeline dashboards",
-        "Agent performance metrics",
-        "Compliance status reporting",
-      ],
-      accent: "rose",
-    },
-  ];
-
-  const accentMap: Record<string, { bg: string; text: string; dot: string }> = {
-    sky: { bg: "bg-sky-500/10", text: "text-sky-400", dot: "bg-sky-400" },
-    cyan: { bg: "bg-cyan-500/10", text: "text-cyan-400", dot: "bg-cyan-400" },
-    violet: { bg: "bg-violet-500/10", text: "text-violet-400", dot: "bg-violet-400" },
-    emerald: { bg: "bg-emerald-500/10", text: "text-emerald-400", dot: "bg-emerald-400" },
-    amber: { bg: "bg-amber-500/10", text: "text-amber-400", dot: "bg-amber-400" },
-    rose: { bg: "bg-rose-500/10", text: "text-rose-400", dot: "bg-rose-400" },
-  };
-
   return (
-    <div className="min-h-screen bg-[hsl(225,25%,6%)]">
+    <div style={{ background: "#ffffff", minHeight: "100vh" }}>
       <Navigation />
 
-      <main className="pt-20 lg:pt-24">
-        {/* Hero */}
-        <section className="relative py-20 lg:py-32 overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-sky-500/6 rounded-full blur-[120px]" />
-
-          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight">
-              Built for Brokerages. <span className="gradient-text-accent">Agents First.</span>{" "}
-              <span className="gradient-text">Powered by AI.</span>
-            </h1>
-            <p className="text-xl lg:text-2xl text-slate-400 mb-8 max-w-3xl mx-auto">
-              Off-market deal sourcing, compliant transactions, and admin tools
-              your brokerage needs to scale — all in one platform.
-            </p>
-            <Button
-              size="lg"
-              className="h-12 px-6 bg-gradient-to-r from-sky-500 to-cyan-400 hover:from-sky-400 hover:to-cyan-300 text-white font-semibold text-base rounded-xl shadow-lg shadow-sky-500/25 border-0 transition-all duration-300"
-              asChild
-              data-testid="button-features-trial"
+      <main style={{ paddingTop: "64px" }}>
+        {/* ── Hero ── */}
+        <section style={{ background: "#f7f7f5", padding: "80px 24px" }}>
+          <div style={{ maxWidth: "680px", margin: "0 auto", textAlign: "center" }}>
+            <h1
+              style={{
+                fontSize: "clamp(32px, 4.5vw, 52px)",
+                lineHeight: 1.05,
+                letterSpacing: "clamp(-1.5px, -0.04em, -2.6px)",
+                color: "#1b0624",
+                fontWeight: 400,
+                marginBottom: "20px",
+              }}
             >
-              <Link href="/pricing">
+              The compliance infrastructure modern brokerages need
+            </h1>
+            <p
+              style={{
+                fontSize: "18px",
+                lineHeight: 1.6,
+                color: "#898683",
+                maxWidth: "540px",
+                margin: "0 auto 36px",
+              }}
+            >
+              From semantic PSA parsing to agentic task orchestration — built on the regulatory frameworks that govern real estate, not bolted on after the fact.
+            </p>
+            <Link href="/pricing">
+              <button
+                className="transition-opacity hover:opacity-85"
+                style={{
+                  background: "#160f0c",
+                  color: "#ffffff",
+                  borderRadius: "999px",
+                  padding: "10px 24px",
+                  fontSize: "15px",
+                  fontWeight: 500,
+                  border: "none",
+                  cursor: "pointer",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                }}
+                data-testid="button-features-trial"
+              >
                 Start 14-Day Free Trial
-                <ArrowRight className="h-4 w-4 ml-2" />
-              </Link>
-            </Button>
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </Link>
           </div>
         </section>
 
-        {/* Features Grid */}
-        <section className="py-20 lg:py-32">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* ── Capability Table ── */}
+        <section style={{ background: "#ffffff", padding: "64px 24px" }}>
+          <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+            <h2
+              style={{
+                fontSize: "24px",
+                lineHeight: 1.3,
+                letterSpacing: "-0.72px",
+                color: "#1b0624",
+                fontWeight: 400,
+                textAlign: "center",
+                marginBottom: "32px",
+              }}
+            >
+              From document storage to agentic orchestration
+            </h2>
+            <div
+              style={{
+                background: "#edece7",
+                borderRadius: "16px",
+                overflow: "hidden",
+              }}
+            >
+              <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                <thead>
+                  <tr style={{ borderBottom: "1px solid rgba(0,0,0,0.07)" }}>
+                    <th style={{ textAlign: "left", padding: "14px 20px", fontSize: "11px", fontWeight: 600, color: "#898683", letterSpacing: "0.08em", textTransform: "uppercase" }}>Capability</th>
+                    <th style={{ textAlign: "left", padding: "14px 20px", fontSize: "11px", fontWeight: 600, color: "#898683", letterSpacing: "0.08em", textTransform: "uppercase" }}>Technical Mechanism</th>
+                    <th style={{ textAlign: "left", padding: "14px 20px", fontSize: "11px", fontWeight: 600, color: "#898683", letterSpacing: "0.08em", textTransform: "uppercase" }}>Operational Impact</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {capabilityTable.map((row, i) => (
+                    <tr
+                      key={i}
+                      style={{ borderBottom: i < capabilityTable.length - 1 ? "1px solid rgba(0,0,0,0.06)" : "none" }}
+                    >
+                      <td style={{ padding: "14px 20px", fontSize: "13px", fontWeight: 500, color: "#292421" }}>{row.capability}</td>
+                      <td style={{ padding: "14px 20px", fontSize: "13px", color: "#898683" }}>{row.mechanism}</td>
+                      <td style={{ padding: "14px 20px", fontSize: "13px", color: "#292421" }}>{row.impact}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Feature Cards — 5 Pillars ── */}
+        <section style={{ background: "#f7f7f5", padding: "64px 24px" }}>
+          <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+            <div style={{ textAlign: "center", marginBottom: "48px" }}>
+              <h2
+                style={{
+                  fontSize: "32px",
+                  lineHeight: 1.2,
+                  letterSpacing: "-0.96px",
+                  color: "#1b0624",
+                  fontWeight: 400,
+                  marginBottom: "12px",
+                }}
+              >
+                Five pillars, one platform
+              </h2>
+              <p style={{ fontSize: "16px", color: "#898683", lineHeight: 1.71, maxWidth: "440px", margin: "0 auto" }}>
+                Each capability is designed to eliminate a specific category of manual work in real estate transactions.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {features.map((feature, index) => {
                 const Icon = feature.icon;
-                const colors = accentMap[feature.accent];
                 return (
                   <div
                     key={index}
-                    className="group glass-card-hover rounded-2xl p-8"
+                    style={{
+                      background: "#ffffff",
+                      borderRadius: "16px",
+                      padding: "32px 28px",
+                      boxShadow: "rgba(0,0,0,0.05) 0px 0px 0px 1px inset",
+                    }}
                     data-testid={`feature-card-${index}`}
                   >
-                    <div className={`w-12 h-12 rounded-xl ${colors.bg} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                      <Icon className={`h-6 w-6 ${colors.text}`} />
+                    <div
+                      style={{
+                        width: "44px",
+                        height: "44px",
+                        borderRadius: "12px",
+                        background: "#edece7",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        marginBottom: "20px",
+                        color: "#898683",
+                      }}
+                    >
+                      <Icon className="h-5 w-5" />
                     </div>
 
-                    <h3 className="text-xl font-bold text-white mb-3">
+                    <h3
+                      style={{
+                        fontSize: "17px",
+                        lineHeight: 1.35,
+                        letterSpacing: "-0.3px",
+                        color: "#1b0624",
+                        fontWeight: 500,
+                        marginBottom: "10px",
+                      }}
+                    >
                       {feature.title}
                     </h3>
 
-                    <p className="text-sm text-slate-400 mb-5 leading-relaxed">
+                    <p
+                      style={{
+                        fontSize: "14px",
+                        lineHeight: 1.65,
+                        color: "#898683",
+                        marginBottom: "20px",
+                      }}
+                    >
                       {feature.description}
                     </p>
 
-                    <ul className="space-y-2.5">
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
                       {feature.highlights.map((highlight, idx) => (
                         <li
                           key={idx}
-                          className="text-sm text-slate-300 flex items-center gap-2.5"
+                          style={{ fontSize: "13px", color: "#292421", display: "flex", alignItems: "flex-start", gap: "8px" }}
                         >
-                          <div className={`w-1.5 h-1.5 rounded-full ${colors.dot}`} />
+                          <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "#898683", flexShrink: 0, marginTop: "7px" }} />
                           {highlight}
                         </li>
                       ))}
@@ -173,35 +275,73 @@ export default function Features() {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="relative py-20 lg:py-24 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-sky-500/[0.03] to-transparent" />
-
-          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-4xl lg:text-5xl font-extrabold text-white mb-6 tracking-tight">
-              Ready to Run a Smarter Brokerage?
+        {/* ── CTA ── */}
+        <section style={{ background: "#1b0624", padding: "96px 24px" }}>
+          <div style={{ maxWidth: "560px", margin: "0 auto", textAlign: "center" }}>
+            <h2
+              style={{
+                fontSize: "40px",
+                lineHeight: 1.1,
+                letterSpacing: "-2px",
+                color: "#ffffff",
+                fontWeight: 400,
+                marginBottom: "16px",
+              }}
+            >
+              Ready to run a smarter brokerage?
             </h2>
-            <p className="text-lg text-slate-400 mb-8">
-              Join brokerages that use CasaGen to stay compliant, find off-market deals, and close faster.
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: 1.71,
+                color: "rgba(255,255,255,0.58)",
+                marginBottom: "36px",
+                maxWidth: "400px",
+                margin: "0 auto 36px",
+              }}
+            >
+              Join brokerages that use CasaGen to stay compliant, close faster, and scale with confidence.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="h-12 px-6 bg-gradient-to-r from-sky-500 to-cyan-400 hover:from-sky-400 hover:to-cyan-300 text-white font-semibold rounded-xl shadow-lg shadow-sky-500/25 border-0 transition-all duration-300"
-                asChild
-                data-testid="button-features-cta"
-              >
-                <Link href="/pricing">Start 14-Day Free Trial</Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="h-12 px-6 bg-white/5 hover:bg-white/10 text-white border-white/10 hover:border-white/20 font-semibold rounded-xl transition-all duration-300"
-                asChild
-                data-testid="button-features-demo"
-              >
-                <Link href="/contact#contact-form">Request a Demo</Link>
-              </Button>
+            <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+              <Link href="/pricing">
+                <button
+                  className="transition-opacity hover:opacity-90"
+                  style={{
+                    background: "#ffffff",
+                    color: "#1b0624",
+                    borderRadius: "999px",
+                    padding: "10px 24px",
+                    fontSize: "15px",
+                    fontWeight: 500,
+                    border: "none",
+                    cursor: "pointer",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "8px",
+                  }}
+                  data-testid="button-features-cta"
+                >
+                  Start 14-Day Free Trial
+                </button>
+              </Link>
+              <Link href="/contact#contact-form">
+                <button
+                  className="transition-opacity hover:opacity-75"
+                  style={{
+                    background: "transparent",
+                    color: "rgba(255,255,255,0.8)",
+                    borderRadius: "999px",
+                    padding: "8px 20px",
+                    fontSize: "15px",
+                    border: "1px solid rgba(255,255,255,0.25)",
+                    cursor: "pointer",
+                    fontWeight: 400,
+                  }}
+                  data-testid="button-features-demo"
+                >
+                  Request a Demo
+                </button>
+              </Link>
             </div>
           </div>
         </section>
