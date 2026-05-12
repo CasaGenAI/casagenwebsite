@@ -20,19 +20,20 @@ interface Plan {
 
 const plans: Plan[] = [
   {
-    id: "per-deal",
-    name: "Per-Deal",
+    id: "solo",
+    name: "Solo",
     price: "$15",
-    priceDetail: "per transaction",
-    savingsNote: "No monthly fees",
-    description: "For solo TCs. Pay only when you close.",
+    priceDetail: "/mo · 1 credit/month",
+    savingsNote: "1 free credit to start",
+    description: "For solo TCs. One credit closes one transaction.",
     features: [
+      "1 transaction credit included each month",
       "PSA parsing + auto-task creation",
       "50-state compliance baseline",
       "Document storage + audit trail",
       "Human review queue — nothing closes without sign-off",
     ],
-    cta: "Start Processing — $15 per transaction",
+    cta: "Start with 1 free credit",
     highlighted: false,
     badge: null,
     isContactUs: false,
@@ -41,11 +42,12 @@ const plans: Plan[] = [
     id: "brokerage",
     name: "Brokerage",
     price: "$549",
-    priceDetail: "/mo · up to 50 transactions",
-    savingsNote: "Save $1,320/year on annual billing",
+    priceDetail: "/mo · 50 credits/month",
+    savingsNote: "3 free credits to start · Save $1,320/year on annual billing",
     description: "For brokerages that need compliance depth and agent management.",
     features: [
-      "Everything in Per-Deal",
+      "Everything in Solo",
+      "50 transaction credits included each month",
       "Agent profiles + role-based permissions",
       "CE credit + license expiration tracking",
       "Tamper-proof audit trail — complete record of every change",
@@ -58,10 +60,32 @@ const plans: Plan[] = [
       "Onboarding workflows",
       "Priority support + guided onboarding",
     ],
-    cta: "Start 14-Day Free Trial",
+    cta: "Start with 3 free credits",
     highlighted: true,
     badge: "Best Value",
     isContactUs: false,
+  },
+  {
+    id: "full-service",
+    name: "Full Service TC",
+    price: "$450",
+    priceDetail: "per transaction",
+    savingsNote: "No subscription · Pay only when you close",
+    description: "For brokerages that want a dedicated TC, not just the software.",
+    features: [
+      "Dedicated licensed transaction coordinator",
+      "End-to-end management from PSA to close",
+      "Document collection + party follow-up",
+      "Deadline tracking + automated reminders",
+      "50-state compliance review",
+      "All CasaGen software features included",
+      "Closing prep + post-close audit",
+      "Direct line for your agents and clients",
+    ],
+    cta: "Talk to a TC",
+    highlighted: false,
+    badge: null,
+    isContactUs: true,
   },
   {
     id: "custom",
@@ -114,18 +138,18 @@ export default function Pricing() {
               Simple pricing for every team size
             </h1>
             <p style={{ fontSize: "16px", lineHeight: 1.71, color: "#898683", marginBottom: "8px" }}>
-              Pay per deal as a solo TC, or run your entire brokerage on one subscription.
+              Start free with included credits. Subscribe for monthly credits sized to your workflow.
             </p>
             <p style={{ fontSize: "13px", color: "#b2afae" }}>
-              14-day free trial on all subscription plans · No credit card required · Cancel anytime
+              Free credits on every plan · No credit card required · Cancel anytime
             </p>
           </div>
         </section>
 
         {/* ── Pricing Cards ── */}
         <section style={{ background: "#ffffff", padding: "64px 24px" }}>
-          <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
-            <div className="grid md:grid-cols-3 gap-4">
+          <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
               {plans.map((plan) => (
                 <div
                   key={plan.id}
@@ -238,7 +262,7 @@ export default function Pricing() {
                   >
                     {plan.features.map((feature, idx) => {
                       const isInherited =
-                        feature === "Everything in Per-Deal" ||
+                        feature === "Everything in Solo" ||
                         feature === "Everything in Brokerage";
                       return (
                         <li

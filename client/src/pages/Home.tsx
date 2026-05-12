@@ -632,7 +632,7 @@ export default function Home() {
               <Link href="/pricing">
                 <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.45)", cursor: "pointer" }}
                   className="hover:text-white/70 transition-colors">
-                  From $15/transaction or $199/mo for teams — see pricing →
+                  Start with 1 free credit · From $15/mo — see pricing →
                 </span>
               </Link>
             </div>
